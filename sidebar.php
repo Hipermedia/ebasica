@@ -57,14 +57,14 @@
 				</p>
 				<?php endif; ?>
 				<!-- Teléfono -->
-				<?php if (get_field('direccionPrograma') != '') :?>
+				<?php if (get_field('telefonoPrograma') != '') :?>
 				<p>
 					<i class="fa fa-phone"></i>
 					<?php the_field('telefonoPrograma'); ?>
 				</p>
 				<?php endif; ?>
 				<!-- Correo -->
-				<?php if (get_field('direccionPrograma') != '') :?>
+				<?php if (get_field('correoPrograma') != '') :?>
 					<p>
 						<i class="fa fa-envelope"></i> 
 						<?php the_field('correoPrograma'); ?>
@@ -106,7 +106,7 @@
 					</p>
 				<?php endif; ?>
 				<!-- correo -->
-				<?php if (get_field('telefonoDireccion') != '') :?>
+				<?php if (get_field('correoDireccion') != '') :?>
 					<p>
 						<i class="fa fa-envelope"></i> 
 						<?php the_field('correoDireccion'); ?>
