@@ -44,9 +44,16 @@
 			width: 105px;
 			height: 105px;
 			float: left;
+			background-size: 100%;
+			background-repeat: no-repeat;
 			@media (max-width: 630px) {
 				float: none;
 				margin: 0 auto;
+			}
+			@media (max-width: 400px) {
+				width: 70px;
+				height: 70px;
+
 			}
 		}
 
@@ -80,6 +87,8 @@
 				margin: 0;
 				font-size: 13px;
 				color: #929292;
+				line-height: 1;
+				padding: .5rem 0;
 			}
 
 			.Escritorio-bloqueContenido-texto {
@@ -90,6 +99,11 @@
 				height: 30px;
 				overflow: hidden;
 				padding-right: .3rem;
+				@media (max-width: $smaller-width) {
+					padding: 0 .5rem;
+					font-size: 15px;
+					height: 55px;
+				}
 			}
 
 			.appear {
@@ -110,6 +124,7 @@
 				@media (max-width: 630px) {
 					display: inline-block;
 					float: none;
+					padding: .8rem 1rem .8rem 1rem;
 				}
 			}
 		}
