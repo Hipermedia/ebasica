@@ -4,8 +4,28 @@
 
 .Escritorio {
 	
+	@media (max-width: $desktop-width) {
+		max-width: 85%;
+		margin: 0 auto 2rem;
+	}
+	@media (max-width: $tablet-width) {
+		padding: 0;
+		max-width: 100%;
+	}
+	
 	.Escritorio-imagenSuperior {
 		margin-bottom: 1.5rem;
+		
+		img {
+			@media (max-width: 980px) {
+				width: auto;
+				margin: 0 auto;
+				display: block;	
+			}
+			@media (max-width: 660px) {
+				width: 100%;	
+			}
+		}
 	}
 
 	.Escritorio-bloque {
@@ -24,6 +44,10 @@
 			width: 105px;
 			height: 105px;
 			float: left;
+			@media (max-width: 630px) {
+				float: none;
+				margin: 0 auto;
+			}
 		}
 
 		/*estilos utilitarios*/
@@ -36,6 +60,10 @@
 			background-size: 100%;
 			background-repeat: no-repeat;
 			background-position: bottom right;
+			@media (max-width: 630px) {
+				width: 100%;
+				text-align: center;
+			}
 
 			/*estilos utilitarios*/
 			.u-title-documentos { color: #774A23; }
@@ -79,6 +107,10 @@
 				float: right;
 				padding-right: 1rem;
 				padding-bottom: .1rem;
+				@media (max-width: 630px) {
+					display: inline-block;
+					float: none;
+				}
 			}
 		}
 	}
