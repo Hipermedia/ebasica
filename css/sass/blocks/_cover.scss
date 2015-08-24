@@ -29,7 +29,11 @@
 			right: 0;
 
 			@media (max-width: $smaller-width) {
-				display: none;
+				background-size: 100% auto;
+				width: 60%;
+				bottom: -10px;
+				background-position: right bottom;
+				height: 35%;
 			}
 		}
 

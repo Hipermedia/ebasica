@@ -9,8 +9,6 @@
 
 get_header(); ?>
 
-<section class="u-contenedor">
-
    
     <article class="Page u-contenido error404">	
 		

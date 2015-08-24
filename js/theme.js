@@ -66,5 +66,12 @@ jQuery(document).ready(function($) {
 	    $('#expand').toggleClass('animated fadeIn');
 	});
 
+	// Login en sidebar
+	$('.ContactoBtnSidebar-image').click(function() {
+	    $('#contacto-panel').toggleClass('is-showing');
+	    $('#contacto-panel').toggleClass('animated bounceIn');
+	    $('.ContactoBtnSidebar').toggleClass('is-showing');
+	});
+
 
 });

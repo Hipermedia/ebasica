@@ -125,6 +125,101 @@
 		}
 	}
 
+	// Programa Btn
+	.ProgramaBtnSidebar,
+	.DirectorioBtnSidebar {
+
+		@media (max-width: $desktop-width ) {
+			width: 400px;
+			margin: 0 auto;
+		}
+		@media (max-width: 460px ) {
+			width: 100%;
+		}
+
+		img {
+			width: 100%;
+			cursor: pointer;
+		}
+	}
+	
+	// Formulario de ingreso
+	.ContactoBtnSidebar {
+		position: relative;
+		z-index: 10;
+		padding-bottom: 1rem;
+		margin-bottom: 1rem;
+		border-bottom: 2px solid #ccc;
+
+		@media (max-width: $desktop-width ) {
+			width: 400px;
+			margin: 0 auto;
+		}
+		@media (max-width: 460px ) {
+			width: 100%;
+		}
+
+		img {
+			width: 100%;
+			cursor: pointer;
+		}
+
+		&.is-showing {
+			min-height: 340px;
+		}
+
+		// Muestra el formulario de contacto
+		.ContactoBtnSidebar-panel.is-showing {
+			height: 250px;
+			padding: 40px .6rem .6rem;
+			overflow: hidden;
+		}
+
+		.ContactoBtnSidebar-panel {
+			position: absolute;
+			overflow: hidden;
+			border: 2px solid #AFAFAF;
+			border-right: 6px solid #AFAFAF;
+			background-image: url('images/textura_bg.png');
+			background-repeat: repeat;
+			font-family: 'Gandhi Sans';
+			@include redondea(20px);
+			width: 260px;
+			height: 0px;
+			padding: 0;
+			right: 16px;
+			top: 50px;
+			z-index: -1;			
+			text-align: left;
+			font-size: .9rem;
+			line-height: 1.25rem;
+			@include transicion(.4s);
+			
+			i {
+				font-size: 1.25rem;
+			}
+
+			@media (max-width: $desktop-width ) {
+				width: 360px;
+				margin: 0 auto;
+				top: 80px;
+				right: 16px;
+			}
+			@media (max-width: 460px ) {
+				width: 90%;
+				top: 60px;
+			}
+			@media (max-width: 350px ) {
+				width: 90%;
+				top: 40px;
+			}
+
+			p { margin: 0 0 10px; }			
+			
+		}
+	}
+
+
 	/*cosmo style estilo global para el panel*/
 	.u-panel {
 		opacity: 0;

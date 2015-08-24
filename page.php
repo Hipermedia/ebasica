@@ -18,8 +18,18 @@ get_header(); ?>
 					<?php the_post_thumbnail( 'large' ); ?>
 				</figure>
 			<?php endif; ?>
+			
 			<!-- Contenido -->
-			<?php the_content(); ?>	
+			<?php $content = get_the_content(); ?>
+			<?php if ( $content == '') : ?>
+				<a href="javascript:history.back()">
+					<img class="u-enConstruccion" src="<?php bloginfo('template_directory'); ?>/images/trabajando.png">
+				</a>
+			<?php else : ?>			
+				<?php the_content();  ?>		
+			<?php endif; ?>
+
+			<?php // the_content(); ?>	
 			<!-- Compartir en redes sociales -->
 			<?php anliSocialShare(); ?>
 	   
