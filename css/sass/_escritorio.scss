@@ -29,6 +29,7 @@
 	}
 
 	.Escritorio-bloque {
+		position: relative;
 		overflow: hidden;
 		margin-bottom: 1.5rem;
 
@@ -47,13 +48,17 @@
 			background-size: 100%;
 			background-repeat: no-repeat;
 			@media (max-width: 630px) {
-				float: none;
-				margin: 0 auto;
-			}
-			@media (max-width: 400px) {
+				position: absolute;
 				width: 70px;
 				height: 70px;
-
+			}
+			@media (max-width: 450px) {
+				width: 70px;
+				height: 70px;
+				position: relative;
+				margin: 0 auto;
+				display: block;
+				float: none;
 			}
 		}
 
@@ -68,8 +73,13 @@
 			background-repeat: no-repeat;
 			background-position: bottom right;
 			@media (max-width: 630px) {
-				width: 100%;
+				width: 85%;
+				float: right;
 				text-align: center;
+			}
+			@media (max-width: 450px) {
+				width: 100%;
+				/*float: none;*/
 			}
 
 			/*estilos utilitarios*/
@@ -81,6 +91,7 @@
 				font-size: 20px;
 				margin: 0;
 				font-weight: bold;
+				padding: .5rem 0;
 			}
 
 			.Escritorio-bloqueContenido-data {
