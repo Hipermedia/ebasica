@@ -92,7 +92,7 @@
 			label {
 				font-weight: normal;
 				color: #9B9B9B;
-				font-size: .75rem; 
+				font-size: .7rem; 
 
 				@media (max-width: 460px ) {
 					width: 100%;
@@ -123,5 +123,71 @@
 			}
 			.login-remember { text-align: left; }
 		}
+	}
+
+	/*cosmo style estilo global para el panel*/
+	.u-panel {
+		opacity: 0;
+		top: 60px;
+		position: absolute;
+		overflow: hidden;
+		border: 2px solid #AFAFAF;
+		border-right: 6px solid #AFAFAF;
+		background-image: url('images/textura_bg.png');
+		background-repeat: repeat;
+		font-family: 'Gandhi Sans';
+		@include redondea(20px);
+		width: 50%;
+		height: 0px;
+		padding: 0;
+		right: 10px;
+		z-index: -1;	
+		float: right;		
+		@include transicion(.4s);
+
+		.u-circle {
+			border: 2px #774A23 solid;
+			width: 20px;
+			height: 20px;
+			display: block;
+			border-radius: 50%;
+			float: left;
+			margin-left: 1rem;
+			margin-right: .2rem;
+		}
+	}
+
+
+	/*cosmo style bloque Documentos y Noticias*/
+	.Documentos, .Noticias {
+		position: relative;
+		z-index: 10;
+
+		.is-showing {
+			top: -1.5rem;
+			position: relative;
+			height: 130px;
+			padding-top: 1.8rem;
+
+			@media (max-width: $desktop-width ) {
+				height: 170px;
+			}
+			@media (max-width: 460px ) {
+				height: auto;
+			}
+		}
+
+		.Documentos-image, .Noticias-image {
+			width: 100%;
+			cursor: pointer;
+		}
+
+		.comunicados { background: #CC2D14; }
+		.circulares { background: #1E990D; }
+		.oficios { background: #47ADEC; }
+		.convocatorias { background: #F7BD4A; }
+		.estadisticas { background: #EB69FF; }
+		.eventos { background: #45CEB3; }
+
 	}
 }

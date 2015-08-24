@@ -3,6 +3,84 @@
 /*------------------------------------------------*/
 
 .Escritorio {
+	
+	.Escritorio-imagenSuperior {
+		margin-bottom: 1.5rem;
+	}
 
+	.Escritorio-bloque {
+		overflow: hidden;
+		margin-bottom: 1.5rem;
+
+		/*estilos utilitarios*/
+		.docs-icon-co { background-image: url('images/icono_docs_comunicado.png'); }
+		.docs-icon-ci { background-image: url('images/icono_docs_circular.png'); }
+		.docs-icon-of { background-image: url('images/icono_docs_oficio.png'); }
+		.noti-icon-co { background-image: url('images/icono_noticias_convocatoria.png'); }
+		.noti-icon-es { background-image: url('images/icono_noticias_estadisticas.png'); }
+		.noti-icon-ev { background-image: url('images/icono_noticias_eventos.png'); }
+
+		.Escritorio-bloqueIcono {
+			width: 105px;
+			height: 105px;
+			float: left;
+		}
+
+		/*estilos utilitarios*/
+		.u-bg-documentos { background-image: url('images/pleca_inf_documentos.png'); }
+		.u-bg-noticias { background-image: url('images/pleca_inf_noticias.png'); }
+
+		.Escritorio-bloqueContenido {
+			float: left;
+			width: 81.5%;
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: bottom right;
+
+			/*estilos utilitarios*/
+			.u-title-documentos { color: #774A23; }
+			.u-title-noticias { color: #395886; }
+
+			.Escritorio-bloqueContenido-titulo {
+				font-family: 'Gandhi Sans' !important;
+				font-size: 20px;
+				margin: 0;
+				font-weight: bold;
+			}
+
+			.Escritorio-bloqueContenido-data {
+				margin: 0;
+				font-size: 13px;
+				color: #929292;
+			}
+
+			.Escritorio-bloqueContenido-texto {
+				font-family: 'Gandhi Sans' !important;
+				font-size: 12px;
+				line-height: 1.3;
+				margin: 0;
+				height: 30px;
+				overflow: hidden;
+				padding-right: .3rem;
+			}
+
+			.appear {
+				padding: .8rem 1.5rem .8rem 1rem !important;
+				height: auto;
+				font-size: 18px;
+				padding-right: 1rem;
+				text-align: justify;
+			}
+
+			.u-link {
+				cursor: pointer;
+				margin: 0;
+				color: #B95044;
+				float: right;
+				padding-right: 1rem;
+				padding-bottom: .1rem;
+			}
+		}
+	}
 }
 

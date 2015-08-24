@@ -51,4 +51,20 @@ jQuery(document).ready(function($) {
 	    $('#loginform-home').toggleClass('animated bounceIn');
 	});
 
+	$('.Documentos-image').click(function() {
+	    $('#documentos-panel').toggleClass('is-showing');
+	    $('#documentos-panel').toggleClass('animated bounceIn');
+	});
+
+	$('.Noticias-image').click(function() {
+	    $('#noticias-panel').toggleClass('is-showing');
+	    $('#noticias-panel').toggleClass('animated bounceIn');
+	});
+
+	$('#trigger-expand').click(function() {
+	    $('#expand').toggleClass('appear');
+	    $('#expand').toggleClass('animated fadeIn');
+	});
+
+
 });
