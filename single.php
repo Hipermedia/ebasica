@@ -5,8 +5,6 @@
 
 get_header(); ?>
 
-<section class="u-contenedor">
-
 	<?php while ( have_posts() ) : the_post(); ?>
 	    <article class="Post u-contenido">	
 			
@@ -25,9 +23,5 @@ get_header(); ?>
 	   
 		</article>
 	<?php endwhile; // end of the loop. ?>
-	
-	<?php get_sidebar(); ?>
-
-</section>
 
 <?php get_footer(); ?>

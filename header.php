@@ -55,24 +55,31 @@
 
 <body <?php body_class(); ?>>
 
-<header id="header" class="Header" role="banner" >
-    <section class="Header-contenido">
+<div class="wrapper u-contenedor">
+
+    <header id="header" class="Header" role="banner" >
+            
+        <aside class="Header-inicioMapa">
+              <ul>
+                  <li><a href="<?php inicio_url(); ?>/mapa/">Mapa</a></li>
+                  <li><a href="<?php inicio_url(); ?>">Inicio</a></li>
+              </ul>
+        </aside>
         
-        <!-- Logo -->
-        <a href="<?php inicio_url(); ?>" id="header-logo" class="Header-logo  animated flipInX">
-            <img src="<?php the_field('logo', 'option'); ?>" alt="<?php bloginfo('name'); ?>">
+        <!-- Logo SEB-->
+        <a href="<?php inicio_url(); ?>" id="header-logo" class="Header-logoSEB  animated flipInX">
+            <!-- <img src="<?php the_field('logo', 'option'); ?>" alt="<?php bloginfo('name'); ?>"> -->
+            <img src="<?php bloginfo('template_directory'); ?>/images/logo-seb.png" alt="<?php bloginfo('name'); ?>">
         </a>
-
-        <!-- Redes sociales -->
-        <?php primalSocialShare(); ?>
-        
-        <!-- Formulario de búsqueda [Catacterística superior] -->
-        <?php get_search_form(); ?>
-        
+        <!-- Logo SEV-->
+        <a href="http://www.sev.gob.mx/" id="header-logo" class="Header-logoSEV  animated flipInX">
+            <!-- <img src="<?php the_field('logo', 'option'); ?>" alt="<?php bloginfo('name'); ?>"> -->
+            <img src="<?php bloginfo('template_directory'); ?>/images/logo-sev.png" alt="<?php bloginfo('name'); ?>">
+        </a>
+            
         <!-- Menú principal -->  
-        <?php primalNav(); ?>
-        
-    </section>
-</header>
+        <?php mainNav(); ?>
+            
+    </header>
 
-<main class="main">
+    <main class="Main">

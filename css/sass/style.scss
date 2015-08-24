@@ -1,11 +1,11 @@
 /*
-Theme Name: SH Base
-Theme URI: http://www.solucioneshipermedia.com/nuestro-trabajo/
-Author: Soluciones Hipermedia
+Theme Name: SEB
+Theme URI: http://www.sev.gob.mx/ebasica/
+Author: SEB & Soluciones Hipermedia
 Author URI: http://www.solucioneshipermedia.com/
-Description: Tema base Wordpress para desarrollo de proyectos de Soluciones Hipermedia
-Version: 1.1
-Text Domain: shbase
+Description: Portal web de la Subsecretaría de Educación Básica
+Version: 1.0
+Text Domain: ebasica
 */ 
 
 /* Iniciales
@@ -18,13 +18,8 @@ Text Domain: shbase
 @import "support/_animate.scss"; /* Librería de animaciones CSS */
 @import "support/_bootstrap.scss"; /* Bootstrap */
 @import "support/_font-awesome.scss"; /* Bootstrap */
-@import "support/bootstrap-theme.scss"; /* Bootstrap Theme */
 @import "support/_fonts.scss"; /* Open Sans */
-
-// Bootstrap Material Desing
-//@import "support/bootstrap-material/_material.scss"; /* Bootstrap Material Desing */
-//@import "support/bootstrap-material/_material-wfont.scss"; /* Bootstrap Material Desing */
-//@import "support/bootstrap-material/_ripples.scss"; /* Bootstrap Material Desing */
+@import "support/_flexslider.scss"; /* Open Sans */
 
 /* Base
 ------------------------------------------*/
@@ -48,4 +43,3 @@ Text Domain: shbase
 
 /* La personalización directa comienza aquí
 -------------------------------------------------------------- */
-

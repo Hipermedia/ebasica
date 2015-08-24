@@ -2,82 +2,264 @@
 /*------------------[COVER]-----------------------*/
 /*------------------------------------------------*/
 
-.PrimalCover {
-	background-position: center top;
-	background-size: 100%;
-	background-attachment: fixed;
-	background-repeat: no-repeat;
+.Cover {
 
-	@media (max-width: $tablet-width) {
-			background-size: auto;
-	}
-
-	.PrimalCover-contenido {
-		padding-top: $header-height;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-		height: 99vh; 
-
+	.CoverSlider {
+		position: relative;
+		padding: 0 20px 0 0;
+		
+		@media (max-width: $desktop-width) {
+			max-width: 85%;
+			margin: 0 auto 2rem;
+		}
 		@media (max-width: $tablet-width) {
-			height: auto;
-			display: inline-block;
-			padding-top: 1rem;
+			padding: 0;
+			max-width: 100%;
 		}
 
-		.PrimalCover-titulos {
+		.CoverSlider-deco {
+			position: absolute;
+			background-image: url('images/deco_slider.png');
+			background-repeat: no-repeat;
+			background-position: right top;
+			width: 358px;
+			height: 116px;
 			display: block;
-			float: left;
-			width: 40%;
-			margin: 0 5%;
-			padding: 0 0 10rem;
+			bottom: -30px;
+			right: 0;
 
-			@media (max-width: $tablet-width) {
-				float: none;
-				width: 90%;
-				padding: 0;
-				margin: 0 5% 2rem;
-				text-align: center;
+			@media (max-width: $smaller-width) {
+				display: none;
 			}
-			.PrimalCover-titulo {
-				color: $support-color;
-				font-size: 3rem;
-				font-weight: bold;
-				text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
-			}
-
-			.PrimalCover-subtitulo {
-				color: #fff;
-				font-size: 2rem;
-				font-weight: 400;
-				text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
-			}
-			.PrimalCover-action{
-				color: $main-color-dark;
-				font-weight: bold;
-			}
-
 		}
-		.PrimalCover-imagen {
-			display: block;
-			float: right;
-			width: 40%;
-			margin: 0 5%;
-			padding: 0 0 10rem;
-			text-align: center;
+
+		.flex-control-nav {
+			width: 220px;
+			overflow: hidden;
+			bottom: 10px;
+			left: 10px;
 
 			@media (max-width: $tablet-width) {
-				float: none;
-				width: 90%;
-				padding: 0;
-				margin: 0 5% 2rem;
-				text-align: center;
+				display: none;
 			}
 
-			img {
-				max-width: 100%;
+			li {
+				float: right;
+
+				a {
+					border-radius: 50%;
+					border: 1px solid #fff;	
+					background: none;
+					box-shadow: none;
+				}
+				a.flex-active {
+					background: #9E010A;
+				}
 			}
 
 		}
 	}
+	.CoverSecondarySlider {
+		-webkit-box-shadow: 1px 2px 4px 2px rgba(0,0,0,0.3);
+		-moz-box-shadow: 1px 2px 4px 2px rgba(0,0,0,0.3);
+		box-shadow: 1px 2px 4px 2px rgba(0,0,0,0.3);
+		border: 1px solid #791338;
+		@include redondea(10px);
+		margin-bottom: 2rem;	
+		@include transicion();	
+
+		@media (max-width: $desktop-width) {
+			max-width: 600px;
+			margin: 0 auto 2rem;
+		}
+		@media (max-width: $tablet-width) {
+			max-width: 100%;
+		}
+
+		
+		&.is-collapsed {
+			margin-top: -11rem;
+		}
+
+		.flexslider {
+			margin: 0;
+			padding: 0;
+			border: none;
+			background: none;
+			@include redondea(10px);
+
+				img { @include redondea(10px); }
+		}
+
+		.flex-control-nav {
+			width: 220px;
+			overflow: hidden;
+			top: 10px;
+			right: 10px;
+
+			@media (max-width: $tablet-width) {
+				display: none;
+			}
+
+			li {
+				float: right;
+
+				a {
+					border-radius: 50%;
+					border: 1px solid #791338;	
+					background: none;
+					box-shadow: none;
+				}
+				a.flex-active {
+					background: #791338;
+				}
+			}
+
+		}
+	}
+
+	.CoverTabs {
+		width: 570px;
+		margin: 0 10px 6rem;
+		padding: 8px 0 0 4px;
+		border: #981A04 solid 1px;
+		@include redondea(20px);
+		padding-bottom: 4rem;
+		background-image: url('images/textura_bg.png');
+		background-repeat: repeat;
+		font-family: 'Gandhi Sans';		
+		
+		@media (max-width: $desktop-width) {
+			margin: 0 auto 6rem; 
+		}		
+		@media (max-width: 600px) {
+			width: 100%;
+		}
+
+		// Encabezado de los tabs
+		.CoverTabs-head {
+			border: none;
+			padding-bottom: 3rem;
+
+			.CoverTabs-tabTitle {
+
+				@media (max-width: 600px) {
+					width: 33%;
+				}
+				
+			}
+
+			// titulos de los tabs
+			.CoverTabs-tabTitle--programas a,
+			.CoverTabs-tabTitle--servicios a,
+			.CoverTabs-tabTitle--noticias a {
+				width: 188px;
+				height: 76px;
+				display: block;
+				float: left;
+				background: none;
+				margin: 0;
+				border: none;
+				background-repeat: no-repeat;
+				background-position: left top;
+				background-size: 100% 200%;
+				@include transicion();
+
+				@media (max-width: 600px) {
+					width: 100%;
+				}
+				@media (max-width: 500px) {
+					height: 50px;
+				}
+			}
+			.CoverTabs-tabTitle--programas a {
+				background-image: url('images/btn_programas_bg.png');
+			}
+			.CoverTabs-tabTitle--servicios a {
+				background-image: url('images/btn_servicios_bg.png');
+			}
+			.CoverTabs-tabTitle--noticias a {
+				background-image: url('images/btn_noticias_bg.png');
+			}
+			// líneas decorativas en after
+			.CoverTabs-tabTitle--programas.active::after,
+			.CoverTabs-tabTitle--servicios.active::after,
+			.CoverTabs-tabTitle--noticias.active::after {
+				position: absolute;
+				width: 334px;
+				height: 20px;
+				display: block;
+				content: ' ';
+				bottom: -25px;
+				@include transicion();
+				
+				@media (max-width: 600px) {
+					display: none;
+				}
+			}
+			.CoverTabs-tabTitle--programas.active::after {
+				background-image: url('images/linea-programas.png');
+				left: 10px;
+			}
+			.CoverTabs-tabTitle--servicios.active::after {
+				background-image: url('images/linea-servicios.png');	
+				left: -100px;			
+			}
+			.CoverTabs-tabTitle--noticias.active::after {
+				background-image: url('images/linea-noticias.png');	
+				right: 15px;			
+			}
+			// Efecto rollover			
+			.CoverTabs-tabTitle--programas a:hover,
+			.CoverTabs-tabTitle--servicios a:hover,
+			.CoverTabs-tabTitle--noticias a:hover {
+				background-position: left bottom;
+			}
+		}
+		// Cuerpo de los tabs
+		.CoverTabs-body {
+			
+			.CoverTabs-contentTab {
+				position: relative;
+				padding-bottom: 200px;
+
+				@media (max-width: 600px) {
+					padding-bottom: 0px;
+				}
+
+				.CoverTabs-list {
+					@include ul-base;
+					padding: 0 10px;
+
+					.CoverTabs-listItem {
+
+						a {
+							font-size: 1rem;
+							line-height: 1.8;
+						}
+						a.CoverTabs-listItem--programas { color: #774A23; }
+						a.CoverTabs-listItem--servicios { color: #637752; }
+						a.CoverTabs-listItem--noticias { color: #395886; }
+						i {
+							margin-right: 8px;
+							color: #AF2322;
+							font-size: .75rem;
+						}
+					}
+				}
+				.CoverSlider-slideImage {
+					position: absolute;
+					width: 610px;
+					left: -22px;
+					bottom: -120px;
+					
+					// Ajuste adaptativo
+					@media (max-width: 620px) {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
 }

@@ -4,20 +4,20 @@
 
 /* Fuentes
 ------------*/
-$global-font: "Open Sans";
-$main-font: "Open Sans";
-$support-font: "Open Sans";
+$global-font: 'Gandhi Sans';
+$main-font: 'TrajanPro';
+$nav-font: "GandhiSans", Georgia;
 
 
 /* Colores
 ------------*/
-$body-bg: 				#efefef;
+$body-bg: 				#F1F1F1;
 $header-bg: 			#fff;
 $footer-bg: 			#fff;
 
-$link-color: 			#0054A8;
-$link-hover-color: 		#2B7CCE;
-$text-color:   			#212121;	// color de texto base, principalmete usado en parrafos
+$link-color: 			#333;
+$link-hover-color: 		#06703A;
+$text-color:   			#333;	// color de texto base, principalmete usado en parrafos
 $support-text-color: 	#727272;
 
 $main-color:        	#0054A8;	// color principal de la marca
@@ -42,7 +42,7 @@ $nav-bg-text-color-active:	none;
 /* Tamaños
 ------------*/
 $header-height: 120px;
-$desktop-width: 1100px;
+$desktop-width: 980px;
 $tablet-width: 880px;
 $smaller-width: 560px;
 

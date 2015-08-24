@@ -3,10 +3,125 @@
 /*------------------------------------------------*/
 
 .Sidebar {
-	display: inline-block;
-	width: 28%;
-	vertical-align: top;
-	padding: 0 1rem 3rem 3rem;
+	display: block;
+	float: right;
+	width: 300px;
+	padding: 0;
+	margin: 0;
 
+	@media (max-width: $desktop-width ) {
+		width: 60%;
+		margin: 0px auto;
+		float: none;
+		padding-top: 3rem;
+		border-top: 1px dotted #ccc;		
+	}
+	@media (max-width: $tablet-width ) {
+		width: 80%;
+	}
+	@media (max-width: $smaller-width ) {
+		width: 90%;
+	}
+	
+	// Formulario de ingreso
+	.Login {
+		position: relative;
+		z-index: 10;
+		min-height: 300px;	
 
+		@media (max-width: $desktop-width ) {
+			width: 400px;
+			margin: 0 auto;
+		}
+		@media (max-width: 460px ) {
+			width: 100%;
+		}
+
+		.Login-image {
+			width: 100%;
+			cursor: pointer;
+		}
+		// Muestra el formulario de contacto
+		.is-showing {
+			height: 150px;
+			padding: 40px .6rem .6rem;
+
+			@media (max-width: $desktop-width ) {
+				height: 170px;
+			}
+			@media (max-width: 460px ) {
+				height: auto;
+			}
+		}
+
+		form {
+			position: absolute;
+			overflow: hidden;
+			border: 2px solid #AFAFAF;
+			border-right: 6px solid #AFAFAF;
+			background-image: url('images/textura_bg.png');
+			background-repeat: repeat;
+			font-family: 'Gandhi Sans';
+			@include redondea(20px);
+			width: 270px;
+			height: 0px;
+			padding: 0;
+			right: 10px;
+			top: 60px;
+			z-index: -1;			
+			text-align: right;
+			@include transicion(.4s);
+
+			@media (max-width: $desktop-width ) {
+				width: 360px;
+				margin: 0 auto;
+				top: 80px;
+				right: 12px;
+			}
+			@media (max-width: 460px ) {
+				width: 90%;
+				top: 60px;
+			}
+			@media (max-width: 350px ) {
+				width: 90%;
+				top: 40px;
+			}
+
+			p { margin: 0 0 5px; }
+			
+			label {
+				font-weight: normal;
+				color: #9B9B9B;
+				font-size: .75rem; 
+
+				@media (max-width: 460px ) {
+					width: 100%;
+					text-align: left;					
+				}
+			}
+			input[type=text],
+			input[type=password] {
+				padding: 0 5px;
+				width: 140px;
+				@media (max-width: 460px ) {
+					width: 100%;					
+				}
+			}
+			input[type=text]:focus,
+			input[type=password]:focus {
+				background: #eee;
+				border: 1px #C18E39 solid;
+				
+			}
+			input[type="submit"] { 
+				padding: 0 5px;
+			}
+			.login-remember, 
+			.login-submit {
+				width: 48%;
+				display: inline-block;
+			}
+			.login-remember { text-align: left; }
+		}
+	}
 }

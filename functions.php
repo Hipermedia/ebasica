@@ -60,21 +60,6 @@ if( function_exists('acf_add_options_page') ) {
 		'title' 	=> 'Portada',
 		'parent_slug'	=> 'theme-general-settings',
 	));
-
-	acf_add_options_sub_page(array(
-		'title' 	=> 'Bloques',
-		'parent_slug'	=> 'theme-general-settings',
-	));
-
-	acf_add_options_sub_page(array(
-		'title'	=> 'Texto',
-		'parent_slug'	=> 'theme-general-settings',
-	));
-
-	acf_add_options_sub_page(array(
-		'title' 	=> 'Testimonios',
-		'parent_slug'	=> 'theme-general-settings',
-	));	
 	acf_add_options_sub_page(array(
 		'title' 	=> 'Contacto',
 		'parent_slug'	=> 'theme-general-settings',
@@ -104,40 +89,15 @@ function get_plantilla_url() {
 /* Navegación
  * ------------------------------------------------------------- */
 /* PRIMAL; navegación principal */
-function primalNav() {
-	get_template_part( 'inc/nav/primal-nav');
+function mainNav() {
+	get_template_part( 'inc/nav/classic-nav');
 }
 
-/* Cover
+/* Login
  * ------------------------------------------------------------- */
-/* PRIMAL; cover */
-function primalCover() {
-	get_template_part( 'inc/cover/primal-cover');
-}
-
-/* Bloques
- * ------------------------------------------------------------- */
-/* PRIMAL; bloques */
-function primalBlocks() {
-	get_template_part( 'inc/blocks/primal-blocks');
-}
-/* SAUTE; bloques */
-function sauteBlocks() {
-	get_template_part( 'inc/blocks/saute-blocks');
-}
-
-/* Texto
- * ------------------------------------------------------------- */
-/* PRIMAL; texto */
-function primalText() {
-	get_template_part( 'inc/text/primal-text');
-}
-
-/* Testimonios
- * ------------------------------------------------------------- */
-/* PRIMAL; testimonios */
-function primalTestimony() {
-	get_template_part( 'inc/testimony/primal-testimony');
+/* PRIMAL; navegación principal */
+function loginSidebar() {
+	get_template_part( 'inc/login-sidebar');
 }
 
 /* Redes sociales
@@ -224,7 +184,7 @@ function shbase_setup() {
 			//remove_menu_page( 'edit.php?post_type=page' );    //Pages
 			remove_menu_page( 'edit-comments.php' );          //Comments
 			//remove_menu_page( 'themes.php' );                 //Appearance
-			remove_menu_page( 'users.php' );                  //Users
+			//remove_menu_page( 'users.php' );                  //Users
 			remove_menu_page( 'options-general.php' );        //Settings
 			remove_menu_page( 'tools.php' );					//Tools
 			remove_menu_page( 'plugins.php' );					//Plugins
@@ -428,27 +388,14 @@ function the_custom_numbered_nav( $custom_query ) { ?>
 <?php }
 endif; // shbase_numerated_nav
 
-//FLEXSLIDER
-function flexslider_sh() {
+// Flexslider
+function flexslider() {
 $template_url = get_bloginfo( 'template_url' );
-
-	wp_enqueue_style( 'flexslider-style', $template_url .'/inc/flexslider/flexslider.css', '1' );
-
-	wp_enqueue_script( 'flexslider', $template_url .'/inc/flexslider/jquery.flexslider-min.js', array('jquery'), '1.10.2', 1);
-		
-	/*wp_enqueue_script( 'methodsvalidate', $template_url .'/js/additional-methods.js', array('jquery'), '1.10.2', 1);*/
-	
-	wp_enqueue_script( 'config-flexslider', $template_url .'/inc/flexslider/config.js', array('jquery','flexslider'), '', 1);
-
+	wp_enqueue_script( 'flexslider', $template_url .'/js/flexslider/jquery.flexslider.js', array('jquery'), '', 1);
 }
-
-//FLEXSLIDER CUSTOM CONFIG
-function flexslider_custom_config_sh() {
-$template_url = get_bloginfo( 'template_url' );
-
-	wp_enqueue_style( 'flexslider-style', $template_url .'/inc/flexslider/flexslider.css', '1' );
-
-	wp_enqueue_script( 'flexslider', $template_url .'/inc/flexslider/jquery.flexslider-min.js', array('jquery'), '1.10.2', 1);
+add_action('wp_enqueue_scripts','flexslider_enqueue');
+function flexslider_enqueue() {
+  wp_enqueue_script('jquery-flexslider', get_bloginfo('template_url').'/js/flexslider/jquery.flexslider.js', array('jquery') );
 }
 
 // WayPoints
@@ -461,17 +408,6 @@ $template_url = get_bloginfo( 'template_url' );
 function bootstrap() {
 $template_url = get_bloginfo( 'template_url' );
 	wp_enqueue_script( 'bootstrap', $template_url .'/js/bootstrap.js', array('jquery'), '', 1);
-}
-
-// Bootstrap Material
-function bootstrapMaterial() {
-$template_url = get_bloginfo( 'template_url' );
-	wp_enqueue_script( 'bootstrapMaterial', $template_url .'/js/bootstrap-material/material.min.js', array('jquery'), '', 1);
-}
-// Ripples (complemento de bootrapmaterial)
-function ripples() {
-$template_url = get_bloginfo( 'template_url' );
-	wp_enqueue_script( 'ripples', $template_url .'/js/bootstrap-material/ripples.js', array('jquery'), '', 1);
 }
 
 

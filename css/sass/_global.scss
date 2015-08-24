@@ -13,11 +13,17 @@ html {
 }
 body {
 	color: $text-color;
-	font-family: $global-font;
-	line-height: 1.5em; /* 24px */
+	font-family: $global-font !important;
 	background: $body-bg;
-	margin: 0;
-	font-size: 1rem;
+	margin: 0; 
+	font-size: .94rem;
+	line-height: 1.5rem;
+
+	@media (max-width: 600px) {
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+	}
+
 }
 /* Links */
 a {
@@ -30,9 +36,17 @@ a:hover {
 	color: $link-hover-color;	
 	text-decoration: none;
 }
-.main {
+.wrapper {
 	// padding-top: $header-height;
+	margin: 1.25rem 0;
+	padding: .5rem 20px 3rem;
+	background: #fff;
+	-webkit-box-shadow: 0px 0px 8px 8px rgba(212,212,212,0.75);
+	-moz-box-shadow: 0px 0px 8px 8px rgba(212,212,212,0.75);
+	box-shadow: 0px 0px 8px 8px rgba(212,212,212,0.75);
+	@include redondea();
 }
+
 h1, h2, h3, h4, h5, h6 {
 	font-family: $main-font;
 }
@@ -57,7 +71,8 @@ h1, h2, h3, h4, h5, h6 {
 	overflow: hidden; 
 	clear: both;
 	width: $desktop-width;
-	margin: 0 auto;
+	margin-left: auto;
+	margin-right: auto;
 
 	@media (max-width: $desktop-width) {
 		max-width: $desktop-width;
@@ -66,8 +81,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 .u-contenedorCompleto {
 	width: 100%;
-	
+	display: inline-block;
 }
+
+.Main {
+	display: block;
+	float: left;
+	overflow: hidden;
+	width: 620px;
+	padding-right: 19px;
+	margin-right: 19px;
+	border-right: #E2E2E2 solid 2px;
+
+	@media (max-width: $desktop-width) {
+		width: 100%;
+		border: none;
+		float: none;
+	}
+}
+
 
 /* = Contenido
 ----------------------------------------------- */
@@ -117,6 +149,7 @@ h1, h2, h3, h4, h5, h6 {
 
 	img {
 		width: 100%;
+
 	}
 }
 
@@ -236,8 +269,10 @@ p img,
 img[class*="align"],
 img[class*="wp-image-"],
 #content .gallery .gallery-icon img {/* Add fancy borders to all WordPress-added images but not things like badges and icons and the like */
-	padding: 6px;
+
 	max-width: 98.5%;
+	@include redondea();
+	border: solid 1px #981A04;
 }
 .wp-caption img {
 	border-color: #eee;
@@ -253,6 +288,7 @@ a:active img[class*="wp-image-"],
 #content .gallery .gallery-icon a:active img {/* Add some useful style to those fancy borders for linked images ... */
 	background: #eee;
 	border-color: #bbb;
+	border: solid 2px #981A04;
 }
 .wp-caption a:focus img,
 .wp-caption a:active img,
@@ -309,6 +345,8 @@ object {
 		img {
 			border: none !important;
 			width: 90%;
+
+			@include redondea();
 		}
 
 	}

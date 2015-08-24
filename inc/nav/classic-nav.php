@@ -2,7 +2,7 @@
 /** Botones para compartir en redes sociales. Estilo ANLI
 ------------------------------------------------------------------- */ 
 ?>
-<nav id="header-main-nav" class="MainNavClasico" role="navigation">
+<nav id="header-main-nav" class="MainNav" role="navigation">
     <!-- Icono de menú para versión adaptativa -->
     <a class="toggle-nav" href="#">MENU DE NAVEGACIÓN</a>
     <!-- Menu WordPress -->
