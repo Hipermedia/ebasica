@@ -23,21 +23,21 @@ function show_errors($array=array()) {
 	 } 
  }
 /* Oculta la barra de administrador si no es usuario  */
-function remueveBarraAdmin() 
-{
-	if (!current_user_can('administrator') && !is_admin()) 
-	{
-	  show_admin_bar(false);
-	}
-}
-add_action('after_setup_theme', 'remueveBarraAdmin');
+// function remueveBarraAdmin() 
+// {
+// 	if (!current_user_can('administrator') && !is_admin()) 
+// 	{
+// 	  show_admin_bar(false);
+// 	}
+// }
+// add_action('after_setup_theme', 'remueveBarraAdmin');
 
  /* Redirige a no administradores al home del sitio  */
-function sh_login_redirect( $redirect_to, $request, $user  ) 
-{
-	return ( is_array( $user->roles ) && in_array( 'administrator', $user->roles ) ) ? admin_url() : site_url();
-}
-add_filter( 'login_redirect', 'sh_login_redirect', 10, 3 );
+// function sh_login_redirect( $redirect_to, $request, $user  ) 
+// {
+// 	return ( is_array( $user->roles ) && in_array( 'administrator', $user->roles ) ) ? admin_url() : site_url();
+// }
+// add_filter( 'login_redirect', 'sh_login_redirect', 10, 3 );
 
 /* ADVANCE CUSTOM FIELDS
 ------------------------------------------------------------ */
@@ -48,7 +48,7 @@ if( function_exists('acf_add_options_page') ) {
 		'page_title' 	=> 'Configuración',
 		'menu_title'	=> 'Configuración',
 		'menu_slug' 	=> 'theme-general-settings',
-		'capability'	=> 'edit_posts',
+		'capability'	=> 'edit_themes',
 		// 'redirect'		=> false
 	));
 
@@ -205,6 +205,21 @@ function shbase_setup() {
 			remove_submenu_page( 'options-general.php', 'options-permalink.php' );		//Permalinks option
 		}	 
 	}
+
+	//AUTHOR PERMISSION
+	function add_theme_caps() {
+	    // gets the author role
+	    $role = get_role( 'author' );
+
+	    // would allow subscriber to upload files
+		//$role->add_cap( 'cap_name' );
+		//$role->add_cap( 'delete_pages' );
+		//$role->add_cap( 'delete_published_pages' );
+		$role->add_cap( 'edit_pages' );
+		$role->add_cap( 'edit_published_pages' );
+		//$role->add_cap( 'publish_pages' );
+	}
+	add_action( 'admin_init', 'add_theme_caps');
 	
 }
 endif; // shbase_setup
