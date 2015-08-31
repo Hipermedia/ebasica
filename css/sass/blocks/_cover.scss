@@ -68,12 +68,15 @@
 		-moz-box-shadow: 1px 2px 4px 2px rgba(0,0,0,0.3);
 		box-shadow: 1px 2px 4px 2px rgba(0,0,0,0.3);
 		border: 1px solid #791338;
-		@include redondea(10px);
+		@include redondea(14px 14px 30px 30px);
 		margin-bottom: 2rem;	
 		@include transicion();	
+		width: 582px;
+		margin-left: 4px;
 
 		@media (max-width: $desktop-width) {
 			max-width: 600px;
+			width: auto;
 			margin: 0 auto 2rem;
 		}
 		@media (max-width: $tablet-width) {
@@ -90,9 +93,9 @@
 			padding: 0;
 			border: none;
 			background: none;
-			@include redondea(10px);
+			@include redondea(14px 14px 30px 30px);
 
-				img { @include redondea(10px); }
+				img { @include redondea(14px 14px 30px 30px); }
 		}
 
 		.flex-control-nav {
@@ -107,12 +110,14 @@
 
 			li {
 				float: right;
+				margin: 0px 3px;
 
 				a {
 					border-radius: 50%;
 					border: 1px solid #791338;	
 					background: none;
 					box-shadow: none;
+					height: 9px;
 				}
 				a.flex-active {
 					background: #791338;

@@ -10,6 +10,11 @@
 
 
 <aside class="Sidebar">
+
+	<?php if(!is_page_template('page-escritorio.php')) { ?>
+		<!-- Formulario de ingreso en el sidebar -->
+		<?php loginSidebar(); ?>
+	<?php } ?>
 	
 	<?php if(is_page_template('page-escritorio.php')) { ?>
 		<!-- botón/ficha Documentos -->
@@ -117,10 +122,7 @@
 		</figure>			
 	<?php } ?>
 
-	<?php if(!is_page_template('page-escritorio.php')) { ?>
-		<!-- Formulario de ingreso en el sidebar -->
-		<?php loginSidebar(); ?>
-	<?php } ?>
+
 
 	
 
