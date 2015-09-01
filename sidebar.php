@@ -36,8 +36,13 @@
 			</div>
 		</div>
 	<?php } ?>
+	
+	<?php // Obtengo de que programa o dirección depende la página
+			global $post; 
+			$template_name = get_post_meta( $post->post_parent, '_wp_page_template', true ); 
+	?>
 
-	<?php if(is_page_template('page-programa.php')) { ?>
+	<?php if(is_page_template('page-programa.php') || $template_name == 'page-programa.php') { ?>
 		<!-- botón/ficha Programa -->
 		<figure class="ProgramaBtnSidebar">
 			<a href="<?php the_permalink() ?>programa/"><img class="" src="<?php bloginfo('template_directory'); ?>/images/btn_programa.png" alt=""></a>
@@ -79,7 +84,7 @@
 		</figure>			
 	<?php } ?>
 	
-	<?php if(is_page_template('page-direccion.php')) { ?>
+	<?php if(is_page_template('page-direccion.php') || $template_name == 'page-direccion.php') { ?>
 		<!-- botón/ficha Programa -->
 		<figure class="ProgramaBtnSidebar">
 			<a href="<?php the_permalink() ?>quienes-somos/"><img class="" src="<?php bloginfo('template_directory'); ?>/images/btn_quienes_somos.png" alt=""></a>

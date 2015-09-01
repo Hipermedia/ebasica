@@ -7,7 +7,7 @@
 	vertical-align: top;
 	display: inline-block;
 	margin: 0 0 3rem;
-	padding: 0 1.5rem;
+	padding: 0;
 
 	@media (max-width: $tablet-width ) {
 		width: 100%;
@@ -24,4 +24,32 @@
 	.Page-titulo {
 
 	}
+
+	.Acordeon {
+		padding: 1rem;
+		background: #fff;
+
+		.panel {
+			border: none;
+			background: none;
+			box-shadow: none;
+
+			.panel-heading {
+				border: none;
+				background: none;
+			}
+
+			.panel-body {
+				border: none;
+				border-left: #757575 2px solid;
+				border-bottom: #757575 2px solid;
+				@include redondea(0 0 0 30px);
+				padding-top: 0;
+				margin-left: 10px;
+			}
+		}
+
+	}
+
 }
+
