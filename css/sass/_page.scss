@@ -37,19 +37,88 @@
 			.panel-heading {
 				border: none;
 				background: none;
-			}
+				padding: .25rem 1rem;
 
+				.panel-title {
+					color: #747474;
+					font-size: 1.45rem;
+					font-weight: normal;
+
+					a, a:hover {	color: #747474;	}
+					i {
+						color: #B66B65;
+						font-size: 1.3rem;
+					}
+				}
+			}
 			.panel-body {
 				border: none;
 				border-left: #757575 2px solid;
 				border-bottom: #757575 2px solid;
 				@include redondea(0 0 0 30px);
-				padding-top: 0;
-				margin-left: 10px;
+				padding: 0 1rem;
+				margin: .6rem 0 0 25px;
+				color: #747474;
+				font-size: 1rem;
+
+				.arriba {
+					color: #C7C7C7;
+					float: right;
+					margin-right: -15px;
+
+					span {
+						width: 20px;
+						height: 20px;
+						background-image: url('images/arriba.png');
+						background-repeat: no-repeat;
+						display: block;
+						float: right;
+						margin-left: .25rem;						
+					}
+				}
 			}
 		}
 
 	}
+	
+	&.Directorio {
+
+		.Directorio-contenido {
+			border: none;
+			border-left: #757575 2px solid;
+			border-bottom: #757575 2px solid;
+			@include redondea(0 0 0 30px);
+			padding: 0 0 0 1rem;
+			margin: 2rem 0 0 33px;
+			color: #747474;
+			font-size: 1rem;
+		
+			table {
+
+				td:nth-child(2) {
+					min-width: 128px;
+				}
+			}
+
+		}
+	}
+
+	table {
+		background: #fff;
+		color: #777;
+		font-size: .95rem;
+		
+		td {
+			border: none;
+			border-right: 3px #fff solid;
+			padding: 4px 8px;
+		}
+
+		tr:nth-child(odd) {
+			background-color: #FFF4E6;	
+		}
+	}
+	
 
 }
 

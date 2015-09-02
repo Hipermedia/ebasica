@@ -53,34 +53,7 @@
 		</figure>
 		<!-- botón/ficha Programa -->
 		<figure class="ContactoBtnSidebar">
-			<img class="ContactoBtnSidebar-image" src="<?php bloginfo('template_directory'); ?>/images/btn_contacto.png" alt="">
-			<div id="contacto-panel" class="ContactoBtnSidebar-panel">
-				<!-- Dirección -->
-				<?php if (get_field('direccionPrograma') != '') :?>
-				<p>
-					<i class="fa fa-map-marker"></i> 
-					<?php the_field('direccionPrograma'); ?>
-					<br>
-					<?php the_field('ciudadPrograma'); ?>
-					<br>
-					<?php the_field('cpPrograma'); ?>
-				</p>
-				<?php endif; ?>
-				<!-- Teléfono -->
-				<?php if (get_field('telefonoPrograma') != '') :?>
-				<p>
-					<i class="fa fa-phone"></i>
-					<?php the_field('telefonoPrograma'); ?>
-				</p>
-				<?php endif; ?>
-				<!-- Correo -->
-				<?php if (get_field('correoPrograma') != '') :?>
-					<p>
-						<i class="fa fa-envelope"></i> 
-						<?php the_field('correoPrograma'); ?>
-					</p>
-				<?php endif; ?>
-			</div>
+			<a href="<?php the_permalink() ?>contacto/"><img class="ContactoBtnSidebar-image" src="<?php bloginfo('template_directory'); ?>/images/btn_contacto.png" alt=""></a>
 		</figure>			
 	<?php } ?>
 	
@@ -95,35 +68,7 @@
 		</figure>
 		<!-- botón/ficha Programa -->
 		<figure class="ContactoBtnSidebar">
-			<img class="ContactoBtnSidebar-image" src="<?php bloginfo('template_directory'); ?>/images/btn_contacto.png" alt="">
-			<div id="contacto-panel" class="ContactoBtnSidebar-panel">
-			<!-- direccion -->
-				<?php if (get_field('direccionDireccion') != '') :?>
-					<p>
-						<i class="fa fa-map-marker"></i> 
-						<?php the_field('direccionDireccion'); ?>
-						<br>
-						<?php the_field('ciudadDireccion'); ?>
-						<br>
-						<?php the_field('cpDireccion'); ?>
-					</p>
-				<?php endif; ?>
-				<!-- telefono -->
-				<?php if (get_field('telefonoDireccion') != '') :?>
-					<p>
-						<i class="fa fa-phone"></i>
-						<?php the_field('telefonoDireccion'); ?>
-					</p>
-				<?php endif; ?>
-				<!-- correo -->
-				<?php if (get_field('correoDireccion') != '') :?>
-					<p>
-						<i class="fa fa-envelope"></i> 
-						<?php the_field('correoDireccion'); ?>
-					</p>
-				<?php endif; ?>
-
-			</div>
+			<a href="<?php the_permalink() ?>contacto/"><img class="ContactoBtnSidebar-image" src="<?php bloginfo('template_directory'); ?>/images/btn_contacto.png" alt=""></a>
 		</figure>			
 	<?php } ?>
 

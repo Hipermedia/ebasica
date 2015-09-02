@@ -10,9 +10,12 @@ get_header(); ?>
          <article class="Page Directorio u-contenido">  
             
             <!-- Título del artículo -->
-            <h1 class=""><?php the_title(); ?></h1>
+            <img class="Directorio-titulo" src="<?php bloginfo('template_directory'); ?>/images/titulo-directorio.png" alt="Directorio">
+            
             <!-- Contenido -->
-            <?php the_content(); ?> 
+            <div class="Directorio-contenido">
+                <?php the_content(); ?> 
+            </div>           
 
             <!-- Compartir en redes sociales -->
             <?php anliSocialShare(); ?>

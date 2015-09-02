@@ -10,7 +10,8 @@ get_header(); ?>
          <article class="Page Contacto u-contenido">  
             
             <!-- Título del artículo -->
-            <h1 class="Programa-title"><?php the_title(); ?></h1>
+            <img class="Directorio-titulo" src="<?php bloginfo('template_directory'); ?>/images/titulo-contacto.png" alt="Directorio">
+            
             <!-- Contenido -->
             <?php the_content(); ?> 
 

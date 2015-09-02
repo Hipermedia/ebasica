@@ -10,7 +10,7 @@ get_header(); ?>
         <article class="Page u-contenido">  
             
             <!-- Título del artículo -->
-            <img src="<?php bloginfo('template_directory'); ?>/images/titulo-acercade.png" alt="">
+            <img src="<?php bloginfo('template_directory'); ?>/images/titulo-acercade.png" alt="Acerca del programa">
             <!-- Contenido -->
             <?php the_content(); ?> 
             <!-- Acordeón -->
@@ -31,8 +31,8 @@ get_header(); ?>
                             <div id="collapse<?php print $bloques; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<?php print $bloques; ?>">
                                 <div class="panel-body">
                                     <?php the_sub_field('contenido'); ?>
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php print $bloques; ?>" aria-expanded="false" aria-controls="collapse<?php print $bloques; ?>">
-                                        Cerrar
+                                    <a class="collapsed arriba" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php print $bloques; ?>" aria-expanded="false" aria-controls="collapse<?php print $bloques; ?>">
+                                        cerrar <span></span>
                                     </a>
                                 </div>
                                 
