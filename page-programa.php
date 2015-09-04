@@ -8,6 +8,8 @@ get_header(); ?>
     <?php while ( have_posts() ) : the_post(); ?>
        
          <article class="Programa u-contenido">  
+            <!-- Breadcrums -->
+            <?php the_breadcrumb();  ?>
             
             <!-- Título del artículo -->
             <h1 class="Programa-title"><?php the_title(); ?></h1>

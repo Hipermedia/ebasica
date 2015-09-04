@@ -8,7 +8,13 @@ get_header(); ?>
     <?php while ( have_posts() ) : the_post(); ?>
        
         <article class="Page u-contenido">  
-            
+            <!-- Breadcrums -->
+            <?php the_breadcrumb();  ?>
+            <!-- Nombre de la dirección o programa -->
+            <?php global $post; ?>
+            <?php if($post->post_parent) :  ?>                
+                <h1 class="Page-title"><?php echo get_the_title($post->post_parent); ?></h1>
+            <?php endif; ?>
             <!-- Título del artículo -->
             <h1 class="Page-title"><?php the_title(); ?></h1>
             <!-- Contenido -->

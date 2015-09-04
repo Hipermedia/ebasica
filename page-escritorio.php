@@ -6,6 +6,7 @@
 get_header(); ?>
     <?php while ( have_posts() ) : the_post(); ?>
        <section class="Escritorio">
+       
        	<figure class="Escritorio-imagenSuperior">
        		<img src="<?php echo get_plantilla_url().'/images/cabecera_MiEscritorio.png' ?>" alt="">
        	</figure>

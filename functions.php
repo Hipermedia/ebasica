@@ -39,6 +39,39 @@ function show_errors($array=array()) {
 // }
 // add_filter( 'login_redirect', 'sh_login_redirect', 10, 3 );
 
+// Insertar Breadcrumb    
+function the_breadcrumb() {
+    global $post;
+     $crumbs = '<aside class="Breadcrumb">';
+	 $crumbs .=     '<p><a href="'.get_option('home').'">SEB</a>';
+
+	 //if the page has a parent add title and link of parent
+	 if($post->post_parent) {
+	 $crumbs .=     ' &raquo; <a href="'.get_permalink($post->post_parent).'">'.get_the_title($post->post_parent).'</a>';
+	 }
+
+	 // if it's not the front page of the site, but isn't the blog either
+	 if((!is_front_page()) && (is_page())) {
+	 $crumbs .=    ' &raquo; '.get_the_title($post->ID);
+	 }
+
+	 //if it's the news/blog home page or any type of archive
+	 if((is_home() ||(is_archive()))) {
+	 $crumbs .=    ' &raquo; '.get_the_title(get_option(page_for_posts));
+	 }
+
+	 //if it's a single news/blog post
+	 if(is_single()) {
+	 $crumbs .=     ' &raquo; <a href="'.get_permalink(get_option(page_for_posts)).'">'.get_the_title(get_option(page_for_posts)).'</a>';
+	 $crumbs .=    ' &raquo; '.get_the_title($post->ID);
+	 }
+	 $crumbs .=    '</p>'."\n";
+	 $crumbs .= '</aside>';
+	 echo $crumbs;
+}    
+// fin breadcrumb 
+
+
 /* ADVANCE CUSTOM FIELDS
 ------------------------------------------------------------ */
 /* Options Page */
@@ -112,7 +145,6 @@ function anliSocialShare() {
 }
 
 
-
 /* ARTICULOS 
  * ------------------------------------------------------------- */
 
@@ -169,6 +201,7 @@ function shbase_setup() {
 		$admins = array( 
 			'admin',
 			'hipermedia',
+			'Basica',
 		);
 	 
 		// get the current user
@@ -203,6 +236,9 @@ function shbase_setup() {
 			remove_submenu_page( 'themes.php', 'custom-background' );
 			remove_submenu_page( 'themes.php', 'slb_options' );
 			remove_submenu_page( 'options-general.php', 'options-permalink.php' );		//Permalinks option
+
+
+
 		}	 
 	}
 
@@ -210,17 +246,20 @@ function shbase_setup() {
 	function add_theme_caps() {
 	    // gets the author role
 	    $role = get_role( 'author' );
-
 	    // would allow subscriber to upload files
 		//$role->add_cap( 'cap_name' );
 		//$role->add_cap( 'delete_pages' );
 		//$role->add_cap( 'delete_published_pages' );
-		$role->add_cap( 'edit_pages' );
+		//$role->add_cap( 'edit_pages' );
 		$role->add_cap( 'edit_published_pages' );
 		//$role->add_cap( 'publish_pages' );
+
 	}
-	add_action( 'admin_init', 'add_theme_caps');
-	
+	add_action( 'admin_init', 'add_theme_caps');	
+
+
+
+
 }
 endif; // shbase_setup
 

@@ -66,6 +66,16 @@ h1, h2, h3, h4, h5, h6 {
 .u-enConstruccion {
 	width: 100%;
 }
+/* Breadcrumbs
+----------------------------------------------- */
+.Breadcrumb {
+	font-size: .8rem;
+	padding: 0 1rem;
+	color: #999;
+	a {	color: #999; }
+	a:hover {	color: #792F2C; }
+}
+
 /* Contenedores
 ----------------------------------------------- */
 .u-contenedor {
