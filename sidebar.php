@@ -56,9 +56,9 @@
 		<!-- botón/ficha Directorio -->
 		<figure class="DirectorioBtnSidebar">
 			<?php if (is_page_template('page-programa.php')) : ?>
-				<a href="<?php the_permalink() ?>programa/">
+				<a href="<?php the_permalink() ?>directorio/">
 			<?php else : ?>
-				<a href="<?php echo get_permalink($post->post_parent) ?>programa/">
+				<a href="<?php echo get_permalink($post->post_parent) ?>directorio/">
 			<?php endif; ?>
 				<img class="" src="<?php bloginfo('template_directory'); ?>/images/btn_directorio.png" alt="">
 			</a>
@@ -100,9 +100,9 @@
 		<!-- botón/ficha Programa -->
 		<figure class="ProgramaBtnSidebar">
 			<?php if (is_page_template('page-direccion.php')) : ?>
-				<a href="<?php the_permalink() ?>programa/">
+				<a href="<?php the_permalink() ?>quienes-somos/">
 			<?php else : ?>
-				<a href="<?php echo get_permalink($post->post_parent) ?>programa/">
+				<a href="<?php echo get_permalink($post->post_parent) ?>quienes-somos/">
 			<?php endif; ?>
 				<img class="" src="<?php bloginfo('template_directory'); ?>/images/btn_quienes_somos.png" alt="">
 			</a>
@@ -110,9 +110,9 @@
 		<!-- botón/ficha Directorio -->
 		<figure class="DirectorioBtnSidebar">
 			<?php if (is_page_template('page-direccion.php')) : ?>
-				<a href="<?php the_permalink() ?>programa/">
+				<a href="<?php the_permalink() ?>directorio/">
 			<?php else : ?>
-				<a href="<?php echo get_permalink($post->post_parent) ?>programa/">
+				<a href="<?php echo get_permalink($post->post_parent) ?>directorio/">
 			<?php endif; ?>
 				<img class="" src="<?php bloginfo('template_directory'); ?>/images/btn_directorio.png" alt="">
 			</a>

@@ -252,16 +252,37 @@ function shbase_setup() {
 		//$role->add_cap( 'delete_published_pages' );
 		//$role->add_cap( 'edit_pages' );
 		$role->add_cap( 'edit_published_pages' );
+		$role->remove_cap( 'delete_pages' );
+		$role->remove_cap( 'publish_pages' );
 		//$role->add_cap( 'publish_pages' );
+
 
 	}
 	add_action( 'admin_init', 'add_theme_caps');	
 
-
-
-
 }
 endif; // shbase_setup
+
+
+if( !current_user_can('activate_plugins') ) {
+	 add_action('admin_head','hide_personal_options');
+	function hide_personal_options($user_id) { ?>
+
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+    	$("#first_name").parent().parent().remove();  // Add id of email or whatever you want to hide
+    	$("#last_name").parent().parent().remove();  // Add id of email or whatever you want to hide
+    	$("#nickname").parent().parent().remove();  // Add id of email or whatever you want to hide
+    	$("#display_name").parent().parent().remove();  // Add id of email or whatever you want to hide
+    	$("#email").parent().parent().remove();  // Add id of email or whatever you want to hide
+    	$("#url").parent().parent().remove();  // Add id of email or whatever you want to hide
+    	$("#description").parent().parent().remove();  // Add id of email or whatever you want to hide
+    });
+    </script> 
+<?php  }
+}
+
+
 
 /**
  * Sets the post excerpt length to 40 words.
