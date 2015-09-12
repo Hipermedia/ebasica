@@ -14,74 +14,31 @@ get_header(); ?>
             <!-- Título del artículo -->
             <h1 class="Direccion-title"><?php the_title(); ?></h1>
             <!-- Contenido -->
-            <?php the_content(); ?> 
+            <?php the_content(); ?>
+            
+            <!-- arrays -->
+            <?php $url = array("programas", "servicios", "noticias", "", "actividades-semanales", "", "materiales", "", "estadisticas"); ?>
+            <?php $defaul_img = array("1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg" ); ?>
+            <?php $user_img = array(); ?>
+            
+            <!-- acf images -->
+            <?php while(have_rows('gridDireccion')) : the_row(); ?>
+                <?php array_push($user_img, get_sub_field('imagen')); ?>
+            <?php endwhile; ?>
+
             <!-- Grid de imágenes -->
             <section class="Direccion-grid">
-                <!-- Programas -->
+            <?php for ($i=0; $i < 9; $i++) { ?>
                 <figure class="Direccion-gridFigure">
-                    <a href="<?php the_permalink() ?>programas/">
-                        <img src="<?php bloginfo('template_directory'); ?>/images/01.jpg" alt="Programas">
-                        <figcaption>Programas</figcaption>  
+                    <a href="<?php the_permalink() ?><?php echo $url[$i]; ?>/">
+                        <img src="<?php if($user_img[$i]!='') { echo $user_img[$i]; } else { echo "http://www.dev4.hipermedia.in/wp-content/themes/ebasica/images/0".$defaul_img[$i]; } ?>" alt="<?php print $url[$i]; ?>">
+                        <figcaption><?php $name = $url[$i]; echo $name = ucfirst($name); ?></figcaption>  
                     </a>        
                 </figure>
-                <!-- Servicios -->
-                <figure class="Direccion-gridFigure">
-                    <a href="<?php the_permalink() ?>servicios/">
-                        <img src="<?php bloginfo('template_directory'); ?>/images/02.jpg" alt="Servicios">
-                        <figcaption>Servicios</figcaption> 
-                    </a>                    
-                </figure>
-                <!-- Noticias -->
-                <figure class="Direccion-gridFigure">
-                    <a href="<?php the_permalink() ?>noticias/">
-                        <img src="<?php bloginfo('template_directory'); ?>/images/03.jpg" alt="Noticias">
-                        <figcaption>Noticias</figcaption>  
-                    </a>                    
-                </figure>
-                <!-- Deco -->
-                <figure class="Direccion-gridFigure">
-                    <a href="">
-                        <img src="<?php bloginfo('template_directory'); ?>/images/04.jpg" alt="">
-                    </a>
-                </figure>
-                <!-- Actividades semanales -->
-                <figure class="Direccion-gridFigure">
-                    <a href="<?php the_permalink() ?>actividades-semanales/">
-                        <img src="<?php bloginfo('template_directory'); ?>/images/05.jpg" alt="Actividades semanales">
-                        <figcaption>Actividades semanales</figcaption>  
-                    </a>                    
-                </figure>
-                <!-- Deco -->
-                 <figure class="Direccion-gridFigure">
-                    <a href="">
-                        <img src="<?php bloginfo('template_directory'); ?>/images/06.jpg" alt="">
-                    </a>
-                </figure>
-                <!-- Materiales -->
-                <figure class="Direccion-gridFigure">
-                    <a href="<?php the_permalink() ?>materiales/">
-                        <img src="<?php bloginfo('template_directory'); ?>/images/07.jpg" alt="Materiales">
-                        <figcaption>Materiales</figcaption>  
-                    </a>                    
-                </figure>
-                <!-- Deco -->
-                 <figure class="Direccion-gridFigure">
-                    <a href="">
-                        <img src="<?php bloginfo('template_directory'); ?>/images/08.jpg" alt="">
-                    </a>
-                </figure>
-                <!-- Estadísticas -->
-                <figure class="Direccion-gridFigure">
-                    <a href="<?php the_permalink() ?>estadisticas/">
-                        <img src="<?php bloginfo('template_directory'); ?>/images/09.jpg" alt="Estadísticas">
-                        <figcaption>Estadísticas</figcaption>  
-                    </a>                    
-                </figure>
+            <?php } ?>
             </section>
-
             <!-- Compartir en redes sociales -->
             <?php anliSocialShare(); ?>
-       
         </article>
     <?php endwhile; // end of the loop. ?>
 

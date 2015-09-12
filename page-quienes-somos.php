@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Acerca del programa
+ * Template Name: Quienes Somos
  */
 
 get_header(); ?>

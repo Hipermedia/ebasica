@@ -4,9 +4,7 @@
  */
 
 get_header(); ?>
-
     <?php while ( have_posts() ) : the_post(); ?>
-       
         <article class="Page u-contenido">  
             <!-- Breadcrums -->
             <?php the_breadcrumb();  ?>
@@ -21,7 +19,6 @@ get_header(); ?>
             <?php the_content(); ?> 
             <!-- Acordeón -->
             <div class="panel-group Acordeon" id="accordion" role="tablist" aria-multiselectable="true">
-                
                 <?php if( have_rows('bloquesAcordeon') ): ?>
                     <?php $bloques = 1; ?> 
                     <?php while( have_rows('bloquesAcordeon') ): the_row(); ?>
@@ -30,7 +27,7 @@ get_header(); ?>
                             <div class="panel-heading" role="tab" id="headin<?php print $bloques; ?>">
                                 <h4 class="panel-title">
                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php print $bloques; ?>" aria-expanded="false" aria-controls="collapse<?php print $bloques; ?>">
-                                            <?php the_sub_field('titulo'); ?>
+                                        <i class="fa fa-circle-o"></i> <?php the_sub_field('titulo'); ?>
                                     </a>
                                 </h4>
                             </div>
@@ -40,17 +37,11 @@ get_header(); ?>
                                 </div>
                             </div>
                         </div>
-
                     <?php endwhile; ?>
                 <?php endif; ?>
-
             </div>
-
-
             <!-- Compartir en redes sociales -->
             <?php anliSocialShare(); ?>
-       
         </article>
     <?php endwhile; // end of the loop. ?>
-
 <?php get_footer(); ?>

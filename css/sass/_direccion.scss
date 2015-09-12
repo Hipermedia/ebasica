@@ -39,17 +39,34 @@
 			@media (max-width: 400px) {
 				width: 100%;
 			}
+
+			&:hover {
+				overflow: hidden;
+				
+				a {
+					overflow: hidden;
+
+					img {
+						transform:scale(1.5);
+						-ms-transform:scale(1.5);
+						-moz-transform:scale(1.5);
+						-webkit-transform:scale(1.5);
+						-o-transform:scale(1.5);
+					}
+				}
+			}
 			
 			a {
+				overflow: hidden;
 				display:block;
 				position:relative;
 				@include redondea(.75rem);
 
-				&::before
-				{
+				&::before {
 				    display:block;
 				    content:'';
 				    position:absolute;
+				    z-index: 9;
 				    width:100%;
 				    height:100%;
 					-webkit-box-shadow: inset 0px 0px 10px 10px rgba(0,0,0,0.5);
@@ -70,10 +87,12 @@
 				}
 			}
 			img {
+				@include transicion();
 				@include redondea(.75rem);
 				display:block;
 			}
 			figcaption {
+				z-index: 10;
 				position: absolute;
 				bottom: 1rem;
 				width: 80%;
