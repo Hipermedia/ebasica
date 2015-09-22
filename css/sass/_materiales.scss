@@ -26,6 +26,7 @@
 	.Materiales-encabezado {
 		width: 100%;
 		padding-bottom: 1rem;
+		margin-bottom: 1rem;
 
 		.Materiales-encabezadoIcono {
 			width: 120px;
@@ -45,7 +46,14 @@
 			width: 76%;
 			margin-left: 1rem;
 
+			.Materiales-encabezadoContenedor-form {
+				width: 25%;
+				display: inline-block;
+			}
+
 			.Materiales-encabezadoContenedor-titulo {
+				text-align: left;
+				width: 74%;
 				padding-right: 5rem;
 				display: inline-block;
 				margin: 0;
@@ -104,6 +112,10 @@
 				text-align: right;
 				cursor: pointer;
 				@include transicion();
+
+				input[type="submit"] {
+					opacity: 0;
+				}
 			}
 		}
 	}
@@ -191,10 +203,12 @@
 
 			.Materiales-bloqueContenido-titulo {
 				font-family: 'Gandhi Sans' !important;
-				font-size: 20px;
+				font-size: 18px;
 				margin: 0;
 				font-weight: bold;
 				padding: .5rem 0 0;
+				height: 50px;
+				overflow: hidden;
 			}
 
 			.Materiales-bloqueContenido-data {
@@ -202,7 +216,7 @@
 				font-size: 13px;
 				color: #929292;
 				line-height: 1;
-				padding: .5rem 0;
+				/*padding: .5rem 0;*/
 			}
 
 			.Materiales-bloqueContenido-texto {
@@ -235,6 +249,8 @@
 				float: right;
 				padding-right: 1rem;
 				padding-bottom: .1rem;
+				font-size: 13px;
+				line-height: 1.25;
 				@media (max-width: 630px) {
 					display: inline-block;
 					float: none;

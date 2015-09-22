@@ -15,7 +15,8 @@ get_header(); ?>
             <!-- Grid de imágenes -->
             <section class="Programa-grid">
                 <!-- arrays -->
-                <?php $url = array("materiales", "actividades-semanales", "noticias"); ?>
+                <?php $grid_name = array("Materiales", "Actividades Semanales", "Estadísticas"); ?>
+                <?php $url = array("materiales", "actividades-semanales", "estadisticas"); ?>
                 <?php $defaul_img = array("1.png", "2.png", "3.png"); ?>
                 <?php $user_img = array(); ?>
                 <!-- acf images -->
@@ -27,7 +28,7 @@ get_header(); ?>
                 <figure class="Programa-gridFigure">
                     <a href="<?php the_permalink() ?><?php echo $url[$i]; ?>/">
                         <img src="<?php if($user_img[$i]!='') { echo $user_img[$i]; } else { echo "http://www.dev4.hipermedia.in/wp-content/themes/ebasica/images/p0".$defaul_img[$i]; } ?>" alt="<?php print $url[$i]; ?>">
-                        <figcaption><?php $name = $url[$i]; echo $name = ucfirst($name); ?></figcaption>  
+                        <figcaption><?php echo $grid_name[$i]; ?></figcaption>  
                     </a>        
                 </figure>
                 <?php } ?>

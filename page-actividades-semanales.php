@@ -5,15 +5,42 @@
 
 get_header(); ?>
    <section class="Materiales">
+      <?php the_breadcrumb();  ?>
       <!-- Título del artículo -->
       <h1 class="Materiales-title"><?php the_title(); ?></h1>
       <!-- Contenido -->
       <?php the_content(); ?>
 
+      <?php global $post; ?>
+      <?php $template_name = get_post_meta( $post->post_parent, '_wp_page_template', true ); ?>
+      <?php  
+         $idPadre = $post->post_parent;
+         if($template_name == 'page-programa.php') {
+          $meta = 'gridPrograma';
+          $img_array = 1;
+         } elseif ($template_name = 'page-direccion.php') {
+           $meta = 'gridDireccion';
+           $img_array = 4;
+         }
+         $args = array( 'page_id' => $idPadre, 'meta_key' => $meta ); 
+         $consulta_acf_img = new WP_Query( $args ); 
+      ?>
+      <?php if ( $consulta_acf_img->have_posts() ) : ?>
+         <?php while ( $consulta_acf_img->have_posts() ) : $consulta_acf_img->the_post(); ?>
+            <?php if(get_field($meta)) : ?>
+            <?php $imagen = get_field($meta); ?>
+            <?php $img = $imagen[$img_array]; ?>
+            <?php $primera = $img['imagen']; ?>
+            <?php endif; ?>
+            <?php if($primera!="") { $style = "background-image: url(".$primera.");"; } else { $style = ""; } ?>
+         <?php endwhile; ?>
+         <?php wp_reset_postdata(); ?>
+      <?php endif; ?>
+
       <div class="Materiales-encabezado">
-         <div class="Materiales-encabezadoIcono"></div>
+         <div class="Materiales-encabezadoIcono" style="<?php echo $style; ?>"></div>
          <div class="Materiales-encabezadoContenedor">
-            <h3 class="Materiales-encabezadoContenedor-titulo">Materiales</h3>
+            <h3 class="Materiales-encabezadoContenedor-titulo">Actividades Semanales</h3>
             <span class="Materiales-encabezadoContenedor-icon u-icon-pdf"></span>
             <span class="Materiales-encabezadoContenedor-icon u-icon-audio"></span>
             <span class="Materiales-encabezadoContenedor-icon u-icon-imagen"></span>
@@ -21,7 +48,7 @@ get_header(); ?>
          </div>
       </div>
       
-      <?php $args = array('cat' => 11, 'meta' => 'postArchivoDescripcion'); ?>
+      <?php $args = array( 'posts_per_page' => 4, 'cat' => 12, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author); ?>
       <?php $consulta = new WP_Query( $args ); ?>
       <?php while ( $consulta->have_posts() ) : $consulta->the_post(); ?>
 
@@ -64,6 +91,8 @@ get_header(); ?>
       	</div>
       </div>
       <?php endwhile; // end of the loop. ?>
+      <?php the_custom_numbered_nav( $consulta ); ?> 
       <?php wp_reset_postdata(); ?>
    </section>
 <?php get_footer(); ?>
+

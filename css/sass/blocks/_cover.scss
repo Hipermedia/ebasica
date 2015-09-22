@@ -63,6 +63,7 @@
 
 		}
 	}
+
 	.CoverSecondarySlider {
 		-webkit-box-shadow: 1px 2px 4px 2px rgba(0,0,0,0.3);
 		-moz-box-shadow: 1px 2px 4px 2px rgba(0,0,0,0.3);
@@ -124,6 +125,54 @@
 				}
 			}
 
+		}
+	}
+
+	.CoverNoticias {
+		margin-bottom: 2rem;
+		border-top: 2px solid #E3E1E4;
+		border-bottom: 2px solid #E3E1E4;
+		overflow: hidden;
+		
+		.CoverNoticias-noticia {
+			width: 50%;
+			float: left;
+
+			
+			.CoverNoticias-noticia-titulo {
+				font-size: 1.3rem;
+				color: #9B999C;
+				text-transform: uppercase;
+				font-family: "GandhiSans", Georgia;
+				line-height: 1.3;
+				max-height: 50px;
+				overflow: hidden;
+			}
+
+			.CoverNoticias-noticia-thumbnail {
+				margin-bottom: .2rem;
+
+				img {
+					max-width: 100%;
+					border-radius: 20px;
+				}
+
+				&:first-child {
+				}
+			}
+
+			.CoverNoticias-noticia-excerpt {
+				
+				p {
+					color: #9B999C;
+					font-size: .8rem;
+					line-height: 1.2;
+				}
+			}
+
+			&:first-child {
+				width: 100%;
+			}
 		}
 	}
 

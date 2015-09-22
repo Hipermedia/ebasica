@@ -15,8 +15,9 @@ get_header(); ?>
             <h1 class="Direccion-title"><?php the_title(); ?></h1>
             <!-- Contenido -->
             <?php the_content(); ?>
-            
+        
             <!-- arrays -->
+            <?php $grid_name = array("Programas", "Servicios", "Noticias", "", "Actividades Semanales", "", "Materiales", "", "Estadísticas"); ?>
             <?php $url = array("programas", "servicios", "noticias", "", "actividades-semanales", "", "materiales", "", "estadisticas"); ?>
             <?php $defaul_img = array("1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg" ); ?>
             <?php $user_img = array(); ?>
@@ -32,7 +33,7 @@ get_header(); ?>
                 <figure class="Direccion-gridFigure">
                     <a href="<?php the_permalink() ?><?php echo $url[$i]; ?>/">
                         <img src="<?php if($user_img[$i]!='') { echo $user_img[$i]; } else { echo "http://www.dev4.hipermedia.in/wp-content/themes/ebasica/images/0".$defaul_img[$i]; } ?>" alt="<?php print $url[$i]; ?>">
-                        <figcaption><?php $name = $url[$i]; echo $name = ucfirst($name); ?></figcaption>  
+                        <figcaption><?php echo $grid_name[$i]; ?></figcaption>  
                     </a>        
                 </figure>
             <?php } ?>

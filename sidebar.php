@@ -213,6 +213,39 @@
 		</figure>			
 	<?php } ?>
 
+	<?php if(is_home()) : ?>
+		<figure class="ContactoBtnSidebar">
+			<img class="ContactoBtnSidebar-image" src="<?php bloginfo('template_directory'); ?>/images/btn_contacto.png" alt="">
+			<div id="contacto-panel" class="ContactoBtnSidebar-panel">
+			<!-- direccion -->
+				<?php if (get_field('direccionContacto', 'option') != '') :?>
+					<p>
+						<i class="fa fa-map-marker"></i> 
+						<?php the_field('direccionContacto', 'option'); ?>
+						<br>
+						<?php the_field('ciudadContacto', 'option'); ?>
+						<br>
+						<?php the_field('cpContacto', 'option'); ?>
+					</p>
+				<?php endif; ?>
+				<!-- telefono -->
+				<?php if (get_field('telefonoContacto', 'option') != '') :?>
+					<p>
+						<i class="fa fa-phone"></i>
+						<?php the_field('telefonoContacto', 'option'); ?>
+					</p>
+				<?php endif; ?>
+				<!-- correo -->
+				<?php if (get_field('correoContacto', 'option') != '') :?>
+					<p>
+						<i class="fa fa-envelope"></i> 
+						<?php the_field('correoContacto', 'option'); ?>
+					</p>
+				<?php endif; ?>
+			</div>
+		</figure>			
+	<?php endif; ?>
+
 	<div class="Sidebar-banners">
 		<?php while(have_rows('bannersSidebar', 'option')) : the_row(); ?>
 			<figure>
@@ -223,3 +256,5 @@
 		<?php endwhile ?>
 	</div>
 </aside>
+
+
