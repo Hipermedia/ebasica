@@ -249,7 +249,7 @@
 	<div class="Sidebar-banners">
 		<?php while(have_rows('bannersSidebar', 'option')) : the_row(); ?>
 			<figure>
-				<a href="<?php the_sub_field('url', 'option'); ?>">
+				<a href="<?php if(get_sub_field('url', 'option')) { the_sub_field('url', 'option'); } else { echo "#"; $style = "style='cursor: default'"; } ?>" <?php echo $style; ?>>
 					<img src="<?php the_sub_field('imagen', 'option'); ?>" alt="">
 				</a>
 			</figure>

@@ -40,6 +40,15 @@ jQuery(document).ready(function($) {
 		slideshow: true,
 		slideshowSpeed: 12000,
 	});
+
+	/* Slider de noticias en portada
+	--------------------------------------------*/
+	$('#coverSliderNoticas').flexslider({
+		animation: "slide",
+		directionNav: false,
+		slideshow: false
+	});
+
 	// Pestañas en portada efecto de colapsado 
 	$('.CoverTabs-btnTitle').click(function() {
 	    $('.CoverSecondarySlider').removeClass('is-collapsed');

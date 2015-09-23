@@ -7,7 +7,9 @@ get_header(); ?>
    <section class="Noticias">
       <?php the_breadcrumb();  ?>
       <!-- Título del artículo -->
-      <h1 class="Noticias-title"><?php the_title(); ?></h1>
+      <?php if($post->post_parent) :  ?>   
+        <h1 class="Noticias-title"><?php echo get_the_title($post->post_parent); ?></h1>             
+      <?php endif; ?>
       <!-- Contenido -->
       <?php the_content(); ?>
         <?php global $post; ?>

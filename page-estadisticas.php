@@ -8,7 +8,9 @@ get_header(); ?>
 
     <?php the_breadcrumb();  ?>
       <!-- Título del artículo -->
-      <h1 class="Estadisticas-title"><?php the_title(); ?></h1>
+      <?php if($post->post_parent) :  ?>   
+        <h1 class="Estadisticas-title"><?php echo get_the_title($post->post_parent); ?></h1>             
+      <?php endif; ?>
       <!-- Contenido -->
       <?php the_content(); ?>
 
@@ -44,7 +46,7 @@ get_header(); ?>
       <div class="Estadisticas-encabezado">
          <div class="Estadisticas-encabezadoIcono" style="<?php echo $style; ?>"></div>
          <div class="Estadisticas-encabezadoContenedor">
-            <h3 class="Estadisticas-encabezadoContenedor-titulo">Estadisticas</h3>
+            <h3 class="Estadisticas-encabezadoContenedor-titulo">Estadísticas</h3>
             <span class="Estadisticas-encabezadoContenedor-icon u-icon-pdf"></span>  
          </div>
       </div>

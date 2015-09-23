@@ -27,27 +27,82 @@ get_header(); ?>
 
 	<!-- Noticias de portada -->
 	<?php 
-	$args = array( 'posts_per_page' => 5, 'cat' => 18);
-	$the_query = new WP_Query( $args ); ?>
+	//$args = array( 'posts_per_page' => 5, 'cat' => 18);
+	//$the_query = new WP_Query( $args ); 
+	?>
 
-	<?php if ( $the_query->have_posts() ) : ?>
+	<?php //if ( $the_query->have_posts() ) : ?>
 		<section class="CoverNoticias">
-		<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-			<div class="CoverNoticias-noticia">
-				<h2 class="CoverNoticias-noticia-titulo"><?php the_title(); ?></h2>
-				<figure class="CoverNoticias-noticia-thumbnail">
-					<?php the_post_thumbnail(); ?>
-				</figure>
-				<div class="CoverNoticias-noticia-excerpt">
-					<?php the_excerpt(); ?>
-				</div>
+			<div id="coverSliderNoticas" class="flexslider CoverNoticias-contenido">
+			  	<ul class="slides">
+			  		<li class="CoverNoticias-noticia">
+			  			<h2 class="CoverNoticias-noticia-titulo">Inician Los Cursos De Actualización Magisterial Correspondientes Al Período Otoño 2015<?php //the_title(); ?></h2>
+			  			<figure class="CoverNoticias-noticia-thumbnail">
+			  				<?php //the_post_thumbnail(); ?>
+			  				<img src="<?php echo get_plantilla_url().'/images/basica.jpg'; ?>" alt="">
+			  			</figure>
+			  			<div class="CoverNoticias-noticia-excerpt">
+			  				<?php //the_excerpt(); ?>
+			  				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto alias repellat, porro sint esse, eaque at aspernatur nobis quam inventore fugit quae fuga illum deleniti perferendis. Sunt reprehenderit commodi laborum voluptas placeat harum perspiciatis repellat nesciunt, aliquid id enim eum
+			  			</div>
+			  		</li>
+
+			  		<li class="CoverNoticias-noticia">
+			  			<h2 class="CoverNoticias-noticia-titulo">Inician Los Cursos De Actualización Magisterial Correspondientes Al Período Otoño 2015<?php //the_title(); ?></h2>
+			  			<figure class="CoverNoticias-noticia-thumbnail">
+			  				<?php //the_post_thumbnail(); ?>
+			  				<img src="<?php echo get_plantilla_url().'/images/basica.jpg'; ?>" alt="">
+			  			</figure>
+			  			<div class="CoverNoticias-noticia-excerpt">
+			  				<?php //the_excerpt(); ?>
+			  				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto alias repellat, porro sint esse, eaque at aspernatur nobis quam inventore fugit quae fuga illum deleniti perferendis. Sunt reprehenderit commodi laborum voluptas placeat harum perspiciatis repellat nesciunt, aliquid id enim eum
+			  			</div>
+			  		</li>
+
+			  		<li class="CoverNoticias-noticia">
+			  			<h2 class="CoverNoticias-noticia-titulo">Inician Los Cursos De Actualización Magisterial Correspondientes Al Período Otoño 2015<?php //the_title(); ?></h2>
+			  			<figure class="CoverNoticias-noticia-thumbnail">
+			  				<?php //the_post_thumbnail(); ?>
+			  				<img src="<?php echo get_plantilla_url().'/images/basica.jpg'; ?>" alt="">
+			  			</figure>
+			  			<div class="CoverNoticias-noticia-excerpt">
+			  				<?php //the_excerpt(); ?>
+			  				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto alias repellat, porro sint esse, eaque at aspernatur nobis quam inventore fugit quae fuga illum deleniti perferendis. Sunt reprehenderit commodi laborum voluptas placeat harum perspiciatis repellat nesciunt, aliquid id enim eum
+			  			</div>
+			  		</li>
+
+			  		<li class="CoverNoticias-noticia">
+			  			<h2 class="CoverNoticias-noticia-titulo">Inician Los Cursos De Actualización Magisterial Correspondientes Al Período Otoño 2015<?php //the_title(); ?></h2>
+			  			<figure class="CoverNoticias-noticia-thumbnail">
+			  				<?php //the_post_thumbnail(); ?>
+			  				<img src="<?php echo get_plantilla_url().'/images/basica.jpg'; ?>" alt="">
+			  			</figure>
+			  			<div class="CoverNoticias-noticia-excerpt">
+			  				<?php //the_excerpt(); ?>
+			  				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto alias repellat, porro sint esse, eaque at aspernatur nobis quam inventore fugit quae fuga illum deleniti perferendis. Sunt reprehenderit commodi laborum voluptas placeat harum perspiciatis repellat nesciunt, aliquid id enim eum
+			  			</div>
+			  		</li>
+
+			  		<li class="CoverNoticias-noticia">
+			  			<h2 class="CoverNoticias-noticia-titulo">Inician Los Cursos De Actualización Magisterial Correspondientes Al Período Otoño 2015<?php //the_title(); ?></h2>
+			  			<figure class="CoverNoticias-noticia-thumbnail">
+			  				<?php //the_post_thumbnail(); ?>
+			  				<img src="<?php echo get_plantilla_url().'/images/basica.jpg'; ?>" alt="">
+			  			</figure>
+			  			<div class="CoverNoticias-noticia-excerpt">
+			  				<?php //the_excerpt(); ?>
+			  				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto alias repellat, porro sint esse, eaque at aspernatur nobis quam inventore fugit quae fuga illum deleniti perferendis. Sunt reprehenderit commodi laborum voluptas placeat harum perspiciatis repellat nesciunt, aliquid id enim eum
+			  			</div>
+			  		</li>
+			  	</ul>
 			</div>
-		<?php endwhile; ?>
+		<?php //while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+		<?php //endwhile; ?>
 		</section>
-		<?php wp_reset_postdata(); ?>
-	<?php else : ?>
-		<p><?php _e( 'Sin resultados' ); ?></p>
-	<?php endif; ?>
+		<?php //wp_reset_postdata(); ?>
+	<?php //else : ?>
+		<p><?php //_e( 'Sin resultados' ); ?></p>
+	<?php //endif; ?>
 
 	<!-- Pestañas de portada -->
 	<section class="CoverTabs">
