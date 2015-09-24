@@ -99,14 +99,9 @@ get_header(); ?>
 		<?php //while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 		<?php //endwhile; ?>
 		</section>
-<<<<<<< HEAD
+
 		<?php //wp_reset_postdata(); ?>
 	<?php //endif; ?>
-=======
-		<?php wp_reset_postdata(); ?>
-	
-	<?php endif; ?>
->>>>>>> 5d122644ec393d67c05b0c87b16b8af14afb433b
 
 	<!-- Pestañas de portada -->
 	<section class="CoverTabs">
