@@ -4,11 +4,11 @@
  */
 
 get_header(); ?>
-   <section class="Materiales">
+   <section class="ActividadesSemanales">
       <?php the_breadcrumb();  ?>
       <!-- Título del artículo -->
       <?php if($post->post_parent) :  ?>   
-        <h1 class="Materiales-title"><?php echo get_the_title($post->post_parent); ?></h1>             
+        <h1 class="ActividadesSemanales-title"><?php echo get_the_title($post->post_parent); ?></h1>             
       <?php endif; ?>
       <!-- Contenido -->
       <?php the_content(); ?>
@@ -39,57 +39,29 @@ get_header(); ?>
          <?php wp_reset_postdata(); ?>
       <?php endif; ?>
 
-      <div class="Materiales-encabezado">
-         <div class="Materiales-encabezadoIcono" style="<?php echo $style; ?>"></div>
-         <div class="Materiales-encabezadoContenedor">
-            <h3 class="Materiales-encabezadoContenedor-titulo">Actividades Semanales</h3>
-            <span class="Materiales-encabezadoContenedor-icon u-icon-pdf"></span>
-            <span class="Materiales-encabezadoContenedor-icon u-icon-audio"></span>
-            <span class="Materiales-encabezadoContenedor-icon u-icon-imagen"></span>
-            <span class="Materiales-encabezadoContenedor-icon u-icon-documento"></span>  
+      <div class="ActividadesSemanales-encabezado">
+         <div class="ActividadesSemanales-encabezadoIcono" style="<?php echo $style; ?>"></div>
+         <div class="ActividadesSemanales-encabezadoContenedor">
+            <h3 class="ActividadesSemanales-encabezadoContenedor-titulo">Actividades Semanales</h3> 
          </div>
       </div>
       
       <?php $args = array( 'posts_per_page' => 4, 'cat' => 12, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author); ?>
       <?php $consulta = new WP_Query( $args ); ?>
       <?php while ( $consulta->have_posts() ) : $consulta->the_post(); ?>
-
-      <?php 
-         $categories = get_the_category(); 
-         $cat1 = $categories[0]->cat_ID;
-         $cat2 = $categories[1]->cat_ID;
-
-         if($cat1 == 16 || $cat2 == 16) {
-            $clase = "imagen";
-         }
          
-         if($cat1 == 15 || $cat2 == 15) {
-            $clase = "audio";
-         }
-
-         if($cat1 == 17 || $cat2 == 17) {
-            $clase = "documento";
-         }
-
-         if($cat1 == 14 || $cat2 == 14) {
-            $clase = "pdf";
-         }
-      ?>
-         
-      <div class="Materiales-bloque u-border-<?php echo $clase; ?>">
-      	<div class="Materiales-bloqueIcono u-icono-<?php echo $clase; ?>"></div>
-      	<div class="Materiales-bloqueContenido">
-      	  <h2 class="Materiales-bloqueContenido-titulo u-titulo-<?php echo $clase; ?>">
+      <div class="ActividadesSemanales-bloque u-border-actividades">
+      	<div class="ActividadesSemanales-bloqueContenido">
+      	  <h2 class="ActividadesSemanales-bloqueContenido-titulo u-titulo-actividades">
             <?php the_title(); ?>
       	  </h2>
-      	  <p class="Materiales-bloqueContenido-data">
+      	  <p class="ActividadesSemanales-bloqueContenido-data">
              <?php the_time(get_option('date_format')); ?>
       	  </p>
-      	  <div id="expand" class="Materiales-bloqueContenido-texto">
-            <?php the_field('postArchivoDescripcion'); ?>
+      	  <div id="expand" class="ActividadesSemanales-bloqueContenido-texto">
+            <?php the_excerpt(); ?>
       	  </div>
-      	  <a href="" class="u-link">descargar</a>
-      	  <p id="trigger-expand" class="u-link">ver más</p>
+      	  <a href="<?php the_permalink(); ?>" class="u-link">ver más</a>
       	</div>
       </div>
       <?php endwhile; // end of the loop. ?>

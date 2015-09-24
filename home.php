@@ -100,8 +100,6 @@ get_header(); ?>
 		<?php //endwhile; ?>
 		</section>
 		<?php //wp_reset_postdata(); ?>
-	<?php //else : ?>
-		<p><?php //_e( 'Sin resultados' ); ?></p>
 	<?php //endif; ?>
 
 	<!-- Pestañas de portada -->
