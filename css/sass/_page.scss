@@ -34,12 +34,15 @@
 			width: 120px;
 			height: 95px;
 			display: inline-block;
+			vertical-align: middle;
 			background-size: 100%;
 			background-repeat: no-repeat;
 			border-radius: 8px;
 		}
 
 		.Page-encabezadoContenedor {
+			margin-bottom: 5px;
+			vertical-align: middle;
 			vertical-align: bottom;
 			display: inline-block;
 			border-bottom: 3px #772B2B solid;

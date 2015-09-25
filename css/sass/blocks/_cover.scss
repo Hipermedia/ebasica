@@ -172,9 +172,9 @@
 			
 			.CoverNoticias-noticia-titulo {
 				text-transform: uppercase;
-				font-size: 1.3rem;
-				color: #9B999C;
-				font-family: "GandhiSans", Georgia;
+				font-size: 18.65px;
+				color: rgb(132, 131, 131);
+				font-family: "Trajan";
 				line-height: 1.3;
 				max-height: 55px;
 				overflow: hidden;
@@ -198,11 +198,11 @@
 
 			.CoverNoticias-noticia-excerpt {
 				
-				/*p {*/
-					color: #9B999C;
-					font-size: .8rem;
+				p {
+					color: rgb(132, 131, 131);
+					font-size: 12px;
 					line-height: 1.2;
-				/*}*/
+				}
 			}
 
 /*			&:first-child {

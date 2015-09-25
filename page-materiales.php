@@ -41,83 +41,85 @@ get_header(); ?>
          <?php wp_reset_postdata(); ?>
       <?php endif; ?>
 
-      <div class="Materiales-encabezado">
-         <div class="Materiales-encabezadoIcono" style="<?php echo $style; ?>"></div>
-         <div class="Materiales-encabezadoContenedor">
-            <h3 class="Materiales-encabezadoContenedor-titulo">Materiales</h3>
-            <form class="Materiales-encabezadoContenedor-form" action="" name="filtrarpor" method="GET">
-               <span class="Materiales-encabezadoContenedor-icon u-icon-pdf">
-                  <input type="submit" OnClick="document.filtrarpor.submit()" name="material" value="14"  >
-               </span>
-
-               <span class="Materiales-encabezadoContenedor-icon u-icon-audio">
-                  <input type="submit" OnClick="document.filtrarpor.submit()" name="material" value="15"  >
-               </span>
-
-               <span class="Materiales-encabezadoContenedor-icon u-icon-imagen">
-                  <input type="submit" OnClick="document.filtrarpor.submit()" name="material" value="16"  >
-               </span>
-
-               <span class="Materiales-encabezadoContenedor-icon u-icon-documento">
-                  <input type="submit" OnClick="document.filtrarpor.submit()" name="material" value="17"  >
-               </span>
-            </form>
+      <div class="u-auxiliar-div">
+         <div class="Materiales-encabezado">
+            <div class="Materiales-encabezadoIcono" style="<?php echo $style; ?>"></div>
+            <div class="Materiales-encabezadoContenedor">
+               <h3 class="Materiales-encabezadoContenedor-titulo">Materiales</h3>
+               <form class="Materiales-encabezadoContenedor-form" action="" name="filtrarpor" method="GET">
+                  <span class="Materiales-encabezadoContenedor-icon u-icon-pdf">
+                     <input type="submit" OnClick="document.filtrarpor.submit()" name="material" value="14"  >
+                  </span>
+   
+                  <span class="Materiales-encabezadoContenedor-icon u-icon-audio">
+                     <input type="submit" OnClick="document.filtrarpor.submit()" name="material" value="15"  >
+                  </span>
+   
+                  <span class="Materiales-encabezadoContenedor-icon u-icon-imagen">
+                     <input type="submit" OnClick="document.filtrarpor.submit()" name="material" value="16"  >
+                  </span>
+   
+                  <span class="Materiales-encabezadoContenedor-icon u-icon-documento">
+                     <input type="submit" OnClick="document.filtrarpor.submit()" name="material" value="17"  >
+                  </span>
+               </form>
+            </div>
          </div>
-      </div>
-      
-      <?php $cat_material  = $_GET['material']?$_GET['material']:'11'; ?>
-      <?php $args = array( 'paged' => get_query_var('paged'), 'posts_per_page' => 4, 'cat' => $cat_material, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author); ?>
-      <?php $consulta = new WP_Query( $args ); ?>
-      <?php $xyz = 0; ?>
-      <?php while ( $consulta->have_posts() ) : $consulta->the_post(); ?>
-      <?php $xyz++; ?>
-      <?php 
-         $categories = get_the_category(); 
-         $cat1 = $categories[0]->cat_ID;
-         $cat2 = $categories[1]->cat_ID;
-
-         if($cat1 == 16 || $cat2 == 16) {
-            $clase = "imagen";
-         }
          
-         if($cat1 == 15 || $cat2 == 15) {
-            $clase = "audio";
-         }
-
-         if($cat1 == 17 || $cat2 == 17) {
-            $clase = "documento";
-         }
-
-         if($cat1 == 14 || $cat2 == 14) {
-            $clase = "pdf";
-         }
-      ?>
-         
-      <div class="Materiales-bloque u-border-<?php echo $clase; ?>">
-      	<div class="Materiales-bloqueIcono u-icono-<?php echo $clase; ?>"></div>
-      	<div class="Materiales-bloqueContenido u-padding-<?php echo $clase; ?>">
-      	  <h2 class="Materiales-bloqueContenido-titulo u-titulo-<?php echo $clase; ?>">
-            <?php the_title(); ?>
-      	  </h2>
-      	  <p class="Materiales-bloqueContenido-data">
-            Publicado el <?php the_time(get_option('date_format')); ?>
-      	  </p>
-      	  <div id="expand<?php echo $xyz; ?>" class="Materiales-bloqueContenido-texto">
-            <?php the_field('postArchivoDescripcion'); ?>
-      	  </div>
-      	  <a href="<?php the_field('adjuntoPost'); ?>" target="_blank" class="u-link">descargar</a>
-      	  <p id="trigger-expand<?php echo $xyz; ?>" class="u-link">ver más</p>
-      	</div>
+         <?php $cat_material  = $_GET['material']?$_GET['material']:'11'; ?>
+         <?php $args = array( 'paged' => get_query_var('paged'), 'posts_per_page' => 4, 'cat' => $cat_material, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author); ?>
+         <?php $consulta = new WP_Query( $args ); ?>
+         <?php $xyz = 0; ?>
+         <?php while ( $consulta->have_posts() ) : $consulta->the_post(); ?>
+         <?php $xyz++; ?>
+         <?php 
+            $categories = get_the_category(); 
+            $cat1 = $categories[0]->cat_ID;
+            $cat2 = $categories[1]->cat_ID;
+   
+            if($cat1 == 16 || $cat2 == 16) {
+               $clase = "imagen";
+            }
+            
+            if($cat1 == 15 || $cat2 == 15) {
+               $clase = "audio";
+            }
+   
+            if($cat1 == 17 || $cat2 == 17) {
+               $clase = "documento";
+            }
+   
+            if($cat1 == 14 || $cat2 == 14) {
+               $clase = "pdf";
+            }
+         ?>
+            
+         <div class="Materiales-bloque u-border-<?php echo $clase; ?>">
+         	<div class="Materiales-bloqueIcono u-icono-<?php echo $clase; ?>"></div>
+         	<div class="Materiales-bloqueContenido u-padding-<?php echo $clase; ?>">
+         	  <h2 class="Materiales-bloqueContenido-titulo u-titulo-<?php echo $clase; ?>">
+               <?php the_title(); ?>
+         	  </h2>
+         	  <p class="Materiales-bloqueContenido-data">
+               Publicado el <?php the_time(get_option('date_format')); ?>
+         	  </p>
+         	  <div id="expand<?php echo $xyz; ?>" class="Materiales-bloqueContenido-texto">
+               <?php the_field('postArchivoDescripcion'); ?>
+         	  </div>
+         	  <a href="<?php the_field('adjuntoPost'); ?>" target="_blank" class="u-link">descargar</a>
+         	  <p id="trigger-expand<?php echo $xyz; ?>" class="u-link">ver más</p>
+         	</div>
+         </div>
+   
+         <script>
+            jQuery('#trigger-expand<?php echo $xyz; ?>').click(function() {
+                jQuery('#expand<?php echo $xyz; ?>').toggleClass('appear');
+                jQuery('#expand<?php echo $xyz; ?>').toggleClass('animated fadeIn');
+            });
+         </script>
+         <?php endwhile; // end of the loop. ?>
+         <?php the_custom_numbered_nav($consulta); ?>  
+         <?php wp_reset_postdata(); ?>
       </div>
-
-      <script>
-         jQuery('#trigger-expand<?php echo $xyz; ?>').click(function() {
-             jQuery('#expand<?php echo $xyz; ?>').toggleClass('appear');
-             jQuery('#expand<?php echo $xyz; ?>').toggleClass('animated fadeIn');
-         });
-      </script>
-      <?php endwhile; // end of the loop. ?>
-      <?php the_custom_numbered_nav($consulta); ?>  
-      <?php wp_reset_postdata(); ?>
    </section>
 <?php get_footer(); ?>

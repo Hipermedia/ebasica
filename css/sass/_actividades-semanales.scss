@@ -3,10 +3,6 @@
 /*------------------------------------------------*/
 
 .ActividadesSemanales {
-	border-left: 2px solid #757575;
-	border-bottom: 2px solid #757575;
-	border-bottom-left-radius: 20px;
-	padding-left: 1rem;
 	
 	@media (max-width: $desktop-width) {
 		max-width: 85%;
@@ -29,6 +25,7 @@
 		margin-bottom: 1rem;
 
 		.ActividadesSemanales-encabezadoIcono {
+			vertical-align: middle;
 			width: 120px;
 			height: 95px;
 			display: inline-block;
@@ -39,6 +36,8 @@
 		}
 
 		.ActividadesSemanales-encabezadoContenedor {
+			margin-bottom: 5px;
+			vertical-align: middle;
 			vertical-align: bottom;
 			display: inline-block;
 			border-bottom: 2px #772B2B solid;
@@ -49,15 +48,24 @@
 				width: 25%;
 				display: inline-block;
 			}
+			
+			.u-minus {
+				font-size: 31.6px;
+			}
+
+			.u-normal {
+				font-size: 41.33px;
+			}
 
 			.ActividadesSemanales-encabezadoContenedor-titulo {
+				line-height: .6;
 				font-weight: bold;
 				text-align: left;
 				width: 74%;
 				padding-right: 5rem;
 				display: inline-block;
 				margin: 0;
-				font-size: 3.5rem;
+				/*font-size: 3.5rem;*/
 				color: #F2F2F2;
 				/*letra estilo WordArt*/
 				text-shadow:

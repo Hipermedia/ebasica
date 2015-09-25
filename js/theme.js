@@ -82,5 +82,7 @@ jQuery(document).ready(function($) {
 	    $('.ContactoBtnSidebar').toggleClass('is-showing');
 	});
 
+	// Quito numeritos del numbered nav
+	$('.page-numbers').html("");
 
 });

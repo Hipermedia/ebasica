@@ -38,35 +38,38 @@ get_header(); ?>
          <?php endwhile; ?>
          <?php wp_reset_postdata(); ?>
       <?php endif; ?>
-
-      <div class="ActividadesSemanales-encabezado">
-         <div class="ActividadesSemanales-encabezadoIcono" style="<?php echo $style; ?>"></div>
-         <div class="ActividadesSemanales-encabezadoContenedor">
-            <h3 class="ActividadesSemanales-encabezadoContenedor-titulo">Actividades Semanales</h3> 
-         </div>
-      </div>
       
-      <?php $args = array( 'posts_per_page' => 4, 'cat' => 12, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author); ?>
-      <?php $consulta = new WP_Query( $args ); ?>
-      <?php while ( $consulta->have_posts() ) : $consulta->the_post(); ?>
+      <div class="u-auxiliar-div">
+         <div class="ActividadesSemanales-encabezado">
+            <div class="ActividadesSemanales-encabezadoIcono" style="<?php echo $style; ?>"></div>
+            <div class="ActividadesSemanales-encabezadoContenedor">
+               <h3 class="ActividadesSemanales-encabezadoContenedor-titulo u-minus">Actividades</h3>
+               <h3 class="ActividadesSemanales-encabezadoContenedor-titulo u-normal">Semanales</h3> 
+            </div>
+         </div>
          
-      <div class="ActividadesSemanales-bloque u-border-actividades">
-      	<div class="ActividadesSemanales-bloqueContenido">
-      	  <h2 class="ActividadesSemanales-bloqueContenido-titulo u-titulo-actividades">
-            <?php the_title(); ?>
-      	  </h2>
-      	  <p class="ActividadesSemanales-bloqueContenido-data">
-             <?php the_time(get_option('date_format')); ?>
-      	  </p>
-      	  <div id="expand" class="ActividadesSemanales-bloqueContenido-texto">
-            <?php the_excerpt(); ?>
-      	  </div>
-      	  <a href="<?php the_permalink(); ?>" class="u-link">ver más</a>
-      	</div>
+         <?php $args = array( 'posts_per_page' => 4, 'cat' => 12, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author); ?>
+         <?php $consulta = new WP_Query( $args ); ?>
+         <?php while ( $consulta->have_posts() ) : $consulta->the_post(); ?>
+            
+         <div class="ActividadesSemanales-bloque u-border-actividades">
+         	<div class="ActividadesSemanales-bloqueContenido">
+         	  <h2 class="ActividadesSemanales-bloqueContenido-titulo u-titulo-actividades">
+               <?php the_title(); ?>
+         	  </h2>
+         	  <p class="ActividadesSemanales-bloqueContenido-data">
+                <?php the_time(get_option('date_format')); ?>
+         	  </p>
+         	  <div id="expand" class="ActividadesSemanales-bloqueContenido-texto">
+               <?php the_excerpt(); ?>
+         	  </div>
+         	  <a href="<?php the_permalink(); ?>" class="u-link">ver más</a>
+         	</div>
+         </div>
+         <?php endwhile; // end of the loop. ?>
+         <?php the_custom_numbered_nav( $consulta ); ?> 
+         <?php wp_reset_postdata(); ?>
       </div>
-      <?php endwhile; // end of the loop. ?>
-      <?php the_custom_numbered_nav( $consulta ); ?> 
-      <?php wp_reset_postdata(); ?>
    </section>
 <?php get_footer(); ?>
 

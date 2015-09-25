@@ -460,6 +460,8 @@ function the_custom_numbered_nav( $custom_query ) { ?>
         echo paginate_links( array(
             'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
             'format' => '?paged=%#%',
+            'prev_text'          => __(''),
+            'next_text'          => __(''),
             'current' => max( 1, get_query_var('paged') ),
             'total' => $custom_query->max_num_pages,
         ) ); ?>

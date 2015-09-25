@@ -29,35 +29,37 @@ get_header(); ?>
            <?php endwhile; ?>
            <?php wp_reset_postdata(); ?>
         <?php endif; ?>
-      
-      <div class="Noticias-encabezado">
-         <div class="Noticias-encabezadoIcono" style="<?php echo $style; ?>"></div>
-         <div class="Noticias-encabezadoContenedor">
-            <h3 class="Noticias-encabezadoContenedor-titulo">Noticias</h3>
-         </div>
-      </div>
 
-      <?php $args = array( 'posts_per_page' => 4, 'cat' => 3, 'author' => $post->post_author); ?>
-      <?php $consulta = new WP_Query( $args ); ?>
-      <?php while ( $consulta->have_posts() ) : $consulta->the_post(); ?>
-         <div class="Noticias-bloque u-border-noticias">
-         	<div class="Noticias-bloqueIcono u-icono-noticias"></div>
-         	<div class="Noticias-bloqueContenido">
-         	  <h2 class="Noticias-bloqueContenido-titulo u-titulo-noticias">
-               <?php the_title(); ?>
-         	  </h2>
-         	  <p class="Noticias-bloqueContenido-data">
-               Publicado el <?php the_time(get_option('date_format')); ?>
-         	  </p>
-         	  <div id="expand" class="Noticias-bloqueContenido-texto">
-               <?php the_excerpt(); ?>
-         	  </div>
-         	  <a href="<?php the_permalink(); ?>" class="u-link">ver noticia</a>
-         	</div>
-         </div>
-      <?php endwhile; // end of the loop. ?>
-      <?php the_custom_numbered_nav( $consulta ); ?> 
-      <?php wp_reset_postdata(); ?>
+      <div class="u-auxiliar-div">
+        <div class="Noticias-encabezado">
+           <div class="Noticias-encabezadoIcono" style="<?php echo $style; ?>"></div>
+           <div class="Noticias-encabezadoContenedor">
+              <h3 class="Noticias-encabezadoContenedor-titulo">Noticias</h3>
+           </div>
+        </div>
+
+        <?php $args = array( 'posts_per_page' => 4, 'cat' => 3, 'author' => $post->post_author); ?>
+        <?php $consulta = new WP_Query( $args ); ?>
+        <?php while ( $consulta->have_posts() ) : $consulta->the_post(); ?>
+           <div class="Noticias-bloque u-border-noticias">
+           	<div class="Noticias-bloqueIcono u-icono-noticias"></div>
+           	<div class="Noticias-bloqueContenido">
+           	  <h2 class="Noticias-bloqueContenido-titulo u-titulo-noticias">
+                 <?php the_title(); ?>
+           	  </h2>
+           	  <p class="Noticias-bloqueContenido-data">
+                 Publicado el <?php the_time(get_option('date_format')); ?>
+           	  </p>
+           	  <div id="expand" class="Noticias-bloqueContenido-texto">
+                 <?php the_excerpt(); ?>
+           	  </div>
+           	  <a href="<?php the_permalink(); ?>" class="u-link">ver noticia</a>
+           	</div>
+           </div>
+        <?php endwhile; // end of the loop. ?>
+        <?php the_custom_numbered_nav( $consulta ); ?> 
+        <?php wp_reset_postdata(); ?>
+      </div>
    </section>
 <?php get_footer(); ?>
 

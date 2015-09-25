@@ -42,45 +42,48 @@ get_header(); ?>
          <?php endwhile; ?>
          <?php wp_reset_postdata(); ?>
       <?php endif; ?>
-
-      <div class="Estadisticas-encabezado">
-         <div class="Estadisticas-encabezadoIcono" style="<?php echo $style; ?>"></div>
-         <div class="Estadisticas-encabezadoContenedor">
-            <h3 class="Estadisticas-encabezadoContenedor-titulo">Estadísticas</h3>
-            <span class="Estadisticas-encabezadoContenedor-icon u-icon-pdf"></span>  
-         </div>
-      </div>
       
-      <?php $args = array( 'posts_per_page' => 4, 'cat' => 13, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author) 
-      ?>
-      <?php $consulta = new WP_Query( $args ); ?>
-      <?php $xyz = 0; ?>
-      <?php while ( $consulta->have_posts() ) : $consulta->the_post(); ?>
-      <?php $xyz++; ?>
-      <div class="Estadisticas-bloque u-border-estadisticas">
-         <div class="Estadisticas-bloqueIcono u-icono-estadisticas"></div>
-         <div class="Estadisticas-bloqueContenido u-padding-estadisticas">
-           <h2 class="Estadisticas-bloqueContenido-titulo u-titulo-estadisticas">
-            <?php the_title(); ?>
-           </h2>
-           <p class="Estadisticas-bloqueContenido-data">
-            Publicado el <?php the_time(get_option('date_format')); ?>
-           </p>
-           <div id="expand<?php echo $xyz; ?>" class="Estadisticas-bloqueContenido-texto">
-            <?php the_field('postArchivoDescripcion'); ?>
+      <div class="u-auxiliar-div">
+        <div class="Estadisticas-encabezado">
+           <div class="Estadisticas-encabezadoIcono" style="<?php echo $style; ?>"></div>
+           <div class="Estadisticas-encabezadoContenedor">
+              <h3 class="Estadisticas-encabezadoContenedor-titulo">Estadísticas</h3>
+              <!-- <span class="Estadisticas-encabezadoContenedor-icon u-icon-pdf"></span> -->
+              <span class="Estadisticas-encabezadoContenedor-icon u-icon-pdf"></span>  
            </div>
-           <a href="" class="u-link">descargar</a>
-           <p id="trigger-expand<?php echo $xyz; ?>" class="u-link">ver más</p>
-         </div>
+        </div>
+        
+        <?php $args = array( 'posts_per_page' => 4, 'cat' => 13, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author) 
+        ?>
+        <?php $consulta = new WP_Query( $args ); ?>
+        <?php $xyz = 0; ?>
+        <?php while ( $consulta->have_posts() ) : $consulta->the_post(); ?>
+        <?php $xyz++; ?>
+        <div class="Estadisticas-bloque u-border-estadisticas">
+           <div class="Estadisticas-bloqueIcono u-icono-estadisticas"></div>
+           <div class="Estadisticas-bloqueContenido u-padding-estadisticas">
+             <h2 class="Estadisticas-bloqueContenido-titulo u-titulo-estadisticas">
+              <?php the_title(); ?>
+             </h2>
+             <p class="Estadisticas-bloqueContenido-data">
+              Publicado el <?php the_time(get_option('date_format')); ?>
+             </p>
+             <div id="expand<?php echo $xyz; ?>" class="Estadisticas-bloqueContenido-texto">
+              <?php the_field('postArchivoDescripcion'); ?>
+             </div>
+             <a href="" class="u-link">descargar</a>
+             <p id="trigger-expand<?php echo $xyz; ?>" class="u-link">ver más</p>
+           </div>
+        </div>
+        <script>
+           jQuery('#trigger-expand<?php echo $xyz; ?>').click(function() {
+               jQuery('#expand<?php echo $xyz; ?>').toggleClass('appear');
+               jQuery('#expand<?php echo $xyz; ?>').toggleClass('animated fadeIn');
+           });
+        </script>
+        <?php endwhile; // end of the loop. ?>
+        <?php the_custom_numbered_nav( $consulta ); ?> 
+        <?php wp_reset_postdata(); ?>
       </div>
-      <script>
-         jQuery('#trigger-expand<?php echo $xyz; ?>').click(function() {
-             jQuery('#expand<?php echo $xyz; ?>').toggleClass('appear');
-             jQuery('#expand<?php echo $xyz; ?>').toggleClass('animated fadeIn');
-         });
-      </script>
-      <?php endwhile; // end of the loop. ?>
-      <?php the_custom_numbered_nav( $consulta ); ?> 
-      <?php wp_reset_postdata(); ?>
    </section>
 <?php get_footer(); ?>
