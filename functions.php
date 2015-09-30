@@ -497,3 +497,30 @@ function themejs() {
 $template_url = get_bloginfo( 'template_url' );
 	wp_enqueue_script( 'themejs', $template_url .'/js/theme.js', array('jquery'), '', 1);
 }
+
+
+
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+
+	if (current_user_can( 'administrator' )) {
+		$permiso = true;
+	} else {
+		$permiso = false;
+	}
+	
+  	register_post_type( 'noticias-portada',
+    	array(
+      		'labels' => array(
+       		'name' => __( 'Noticias' ),
+        	'singular_name' => __( 'Noticias' )
+      	),
+      	'public' => true,
+      	'has_archive' => true,
+      	'supports'	=> array( 'title', 'editor', 'thumbnail' ),
+      	'show_ui'	=> $permiso,
+    )
+  );
+}
+
+

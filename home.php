@@ -27,7 +27,7 @@ get_header(); ?>
 
 	<!-- Noticias de portada -->
 	<?php 
-	$args = array( 'posts_per_page' => 5, 'cat' => 18);
+	$args = array( 'posts_per_page' => 5, 'post_type' => 'noticias-portada' );
 	$the_query = new WP_Query( $args ); 
 	?>
 
@@ -78,7 +78,7 @@ get_header(); ?>
 			  		    <?php while( have_rows('recursoProgramas', 'option') ): the_row(); ?>
 				  		    <li class="CoverTabs-listItem">
 				  		   		<i class="fa fa-circle"></i>
-				  		   		<a href="<?php the_sub_field('url'); ?>" class="CoverTabs-listItem--programas">
+				  		   		<a target="<?php the_sub_field('externo'); ?>" href="<?php the_sub_field('url'); ?>" class="CoverTabs-listItem--programas">
 				  		   			<?php the_sub_field('titulo'); ?>
 				  		   		</a>
 				  		   	</li>

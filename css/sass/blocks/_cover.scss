@@ -40,15 +40,15 @@
 		.flex-control-nav {
 			width: 220px;
 			overflow: hidden;
-			bottom: 10px;
-			left: 10px;
+			bottom: -10px;
+			left: 55px;
 
 			@media (max-width: $tablet-width) {
 				display: none;
 			}
 
 			li {
-				float: right;
+				/*float: right;*/
 
 				a {
 					border-radius: 50%;
