@@ -27,7 +27,7 @@ get_header(); ?>
 
 	<!-- Noticias de portada -->
 	<?php 
-	$args = array( 'posts_per_page' => 5, 'post_type' => 'noticias-portada' );
+	$args = array( 'posts_per_page' => 6, 'post_type' => 'noticias-portada' );
 	$the_query = new WP_Query( $args ); 
 	?>
 
