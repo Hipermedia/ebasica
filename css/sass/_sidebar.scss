@@ -59,6 +59,7 @@
 			}
 			@media (max-width: 460px ) {
 				height: auto;
+				/*margin-bottom: 4rem;*/
 			}
 		}
 
@@ -83,16 +84,16 @@
 			@media (max-width: $desktop-width ) {
 				width: 360px;
 				margin: 0 auto;
-				top: 80px;
+				top: initial;
 				right: 12px;
 			}
 			@media (max-width: 460px ) {
 				width: 90%;
-				top: 60px;
+				/*top: 0px;*/
 			}
 			@media (max-width: 350px ) {
 				width: 90%;
-				top: 40px;
+				/*top: 40px;*/
 			}
 
 			p { margin: 0 0 5px; }

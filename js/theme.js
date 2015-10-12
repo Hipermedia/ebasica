@@ -49,9 +49,23 @@ jQuery(document).ready(function($) {
 		slideshow: false
 	});
 
+	$('#coverSliderNoti').flexslider({
+		animation: "slide",
+		directionNav: false,
+		slideshow: false
+	});
+
 	// Pestañas en portada efecto de colapsado 
-	$('.CoverTabs-btnTitle').click(function() {
+	$('.CoverTabs-btnTitle').click(function(e) {
+	    var tab = $(this);
 	    $('.CoverSecondarySlider').removeClass('is-collapsed');
+	    if( tab.parent('li').hasClass('active')){
+	    	$('.CoverSecondarySlider').addClass('is-collapsed');
+	        window.setTimeout(function(){
+	            $(".tab-pane").removeClass('active');
+	            tab.parent('li').removeClass('active');
+	        },1);
+	    }
 	});
 
 	// Login en sidebar

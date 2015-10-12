@@ -48,7 +48,7 @@ get_header(); ?>
             </div>
          </div>
          
-         <?php $args = array( 'posts_per_page' => 4, 'cat' => 12, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author); ?>
+         <?php $args = array( 'posts_per_page' => 6, 'cat' => 12, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author); ?>
          <?php $consulta = new WP_Query( $args ); ?>
          <?php while ( $consulta->have_posts() ) : $consulta->the_post(); ?>
             

@@ -67,7 +67,7 @@ get_header(); ?>
          </div>
          
          <?php $cat_material  = $_GET['material']?$_GET['material']:'11'; ?>
-         <?php $args = array( 'paged' => get_query_var('paged'), 'posts_per_page' => 4, 'cat' => $cat_material, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author); ?>
+         <?php $args = array( 'paged' => get_query_var('paged'), 'posts_per_page' => 6, 'cat' => $cat_material, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author); ?>
          <?php $consulta = new WP_Query( $args ); ?>
          <?php $xyz = 0; ?>
          <?php while ( $consulta->have_posts() ) : $consulta->the_post(); ?>

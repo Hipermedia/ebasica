@@ -26,31 +26,37 @@ get_header(); ?>
 	<?php endif; ?>
 
 	<!-- Noticias de portada -->
-	<?php 
-	$args = array( 'posts_per_page' => 6, 'post_type' => 'noticias-portada' );
-	$the_query = new WP_Query( $args ); 
-	?>
 
-	<?php if ( $the_query->have_posts() ) : ?>
-		<section class="CoverNoticias">
-			<div id="coverSliderNoticas" class="flexslider CoverNoticias-contenido">
-			  	<ul class="slides">
-			  		<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-			  		<li class="CoverNoticias-noticia">
-			  			<h2 class="CoverNoticias-noticia-titulo"><?php the_title(); ?></h2>
-			  			<figure class="CoverNoticias-noticia-thumbnail">
-			  				<?php the_post_thumbnail(); ?>
-			  			</figure>
-			  			<div class="CoverNoticias-noticia-excerpt">
-			  				<?php the_excerpt(); ?>
-			  			</div>
-			  		</li>
-			  		<?php endwhile; ?>
-			  	</ul>
-			</div>
-		</section>
-		<?php wp_reset_postdata(); ?>
-	<?php endif; ?>
+	<section class="CoverNoticias">
+		<div id="coverSliderNoticas" class="flexslider CoverNoticias-contenido">
+		  	<ul class="slides">
+		  		<?php while(have_rows('customPostNoticias', 'option')) : the_row(); ?>
+		  		<?php $post = get_sub_field('noticia'); ?>
+		  		<?php 
+		  		$args = array( 'p' => $post, 'post_type' => 'noticias-portada'  );
+		  		$the_query = new WP_Query( $args ); ?>
+
+		  		<?php if ( $the_query->have_posts() ) : ?>
+		  			<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+		  			<li class="CoverNoticias-noticia">
+		  				<h2 class="CoverNoticias-noticia-titulo"><?php the_title(); ?></h2>
+		  				<figure class="CoverNoticias-noticia-thumbnail">
+		  					<?php the_post_thumbnail(); ?>
+		  				</figure>
+		  				<div class="CoverNoticias-noticia-excerpt">
+		  					<?php the_excerpt(); ?>
+		  				</div>
+		  			</li>
+		  			<?php endwhile; ?>
+		  			<?php wp_reset_postdata(); ?>
+		  		<?php else : ?>
+		  			<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+		  		<?php endif; ?>
+
+		  		<?php endwhile; ?>
+		  	</ul>
+		</div>
+	</section>
 
 	<!-- Pestañas de portada -->
 	<section class="CoverTabs">
@@ -94,7 +100,7 @@ get_header(); ?>
 			  		    <?php while( have_rows('recursoServicios', 'option') ): the_row(); ?>
 				  		    <li class="CoverTabs-listItem">
 				  		   		<i class="fa fa-circle"></i>
-				  		   		<a href="<?php the_sub_field('url'); ?>" class="CoverTabs-listItem--servicios">
+				  		   		<a target="<?php the_sub_field('externo'); ?>" href="<?php the_sub_field('url'); ?>" class="CoverTabs-listItem--servicios">
 				  		   			<?php the_sub_field('titulo'); ?>
 				  		   		</a>
 				  		   	</li>
@@ -110,7 +116,7 @@ get_header(); ?>
 			  		    <?php while( have_rows('recursoNoticias', 'option') ): the_row(); ?>
 				  		    <li class="CoverTabs-listItem">
 				  		   		<i class="fa fa-circle"></i>
-				  		   		<a href="<?php the_sub_field('url'); ?>" class="CoverTabs-listItem--noticias">
+				  		   		<a target="<?php the_sub_field('externo'); ?>" href="<?php the_sub_field('url'); ?>" class="CoverTabs-listItem--noticias">
 				  		   			<?php the_sub_field('titulo'); ?>
 				  		   		</a>
 				  		   	</li>
@@ -139,6 +145,5 @@ get_header(); ?>
 			</div>
 		</section>
 	<?php endif; ?>
-
 </section>
 <?php get_footer(); ?>

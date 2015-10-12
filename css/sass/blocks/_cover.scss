@@ -40,7 +40,7 @@
 		.flex-control-nav {
 			width: 220px;
 			overflow: hidden;
-			bottom: -10px;
+			bottom: -33px;
 			left: 55px;
 
 			@media (max-width: $tablet-width) {
@@ -52,7 +52,7 @@
 
 				a {
 					border-radius: 50%;
-					border: 1px solid #fff;	
+					border: 1px solid #791338;	
 					background: none;
 					box-shadow: none;
 				}
@@ -74,6 +74,7 @@
 		@include transicion();	
 		width: 582px;
 		margin-left: 4px;
+		overflow: hidden;
 
 		@media (max-width: $desktop-width) {
 			max-width: 600px;
@@ -100,17 +101,18 @@
 		}
 
 		.flex-control-nav {
-			width: 220px;
+			width: auto;/*220px;*/
 			overflow: hidden;
 			top: 10px;
 			right: 10px;
+			height: 15px;
 
 			@media (max-width: $tablet-width) {
 				display: none;
 			}
 
 			li {
-				float: right;
+				float: left;
 				margin: 0px 3px;
 
 				a {
@@ -171,10 +173,10 @@
 
 			
 			.CoverNoticias-noticia-titulo {
-				text-transform: uppercase;
+				/*text-transform: uppercase;*/
 				font-size: 18.65px;
 				color: rgb(132, 131, 131);
-				font-family: "Trajan";
+				font-family: "TrajanPro" !important;
 				line-height: 1.3;
 				max-height: 55px;
 				overflow: hidden;

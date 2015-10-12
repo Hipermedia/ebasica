@@ -100,7 +100,7 @@
 				<?php if (get_field('correoPrograma') != '') :?>
 					<p>
 						<i class="fa fa-envelope"></i> 
-						<?php the_field('correoPrograma'); ?>
+						<a href="mailto:<?php the_field('correoPrograma'); ?>"><?php the_field('correoPrograma'); ?></a>
 					</p>
 				<?php endif; ?>
 
@@ -126,7 +126,7 @@
 				<?php if ($correo_programa != '') :?>
 					<p>
 						<i class="fa fa-envelope"></i> 
-						<?php echo $correo_programa; ?>
+						<a href="mailto:<?php echo $correo_programa; ?>"><?php echo $correo_programa; ?></a>
 					</p>
 				<?php endif; ?>
 			</div>
@@ -180,7 +180,7 @@
 				<?php if (get_field('correoDireccion') != '') :?>
 					<p>
 						<i class="fa fa-envelope"></i> 
-						<?php the_field('correoDireccion'); ?>
+						<a href="mailto:<?php the_field('correoDireccion'); ?>"><?php the_field('correoDireccion'); ?></a>
 					</p>
 				<?php endif; ?>
 				
@@ -206,7 +206,7 @@
 				<?php if ($correo_direccion != '') :?>
 					<p>
 						<i class="fa fa-envelope"></i> 
-						<?php echo $correo_direccion; ?>
+						<a href="mailto:<?php echo $correo_direccion; ?>"><?php echo $correo_direccion; ?></a>
 					</p>
 				<?php endif; ?>
 			</div>
@@ -239,7 +239,7 @@
 				<?php if (get_field('correoContacto', 'option') != '') :?>
 					<p>
 						<i class="fa fa-envelope"></i> 
-						<?php the_field('correoContacto', 'option'); ?>
+						<a href="mailto:<?php the_field('correoContacto', 'option'); ?>"><?php the_field('correoContacto', 'option'); ?></a>
 					</p>
 				<?php endif; ?>
 			</div>
@@ -249,7 +249,7 @@
 	<div class="Sidebar-banners">
 		<?php while(have_rows('bannersSidebar', 'option')) : the_row(); ?>
 			<figure>
-				<a href="<?php if(get_sub_field('url', 'option')) { the_sub_field('url', 'option'); } else { echo "#"; $style = "style='cursor: default'"; } ?>" <?php echo $style; ?>>
+				<a href="<?php if(get_sub_field('url', 'option')) { the_sub_field('url', 'option'); $style = "style='cursor: pointer'"; } else { echo "#"; $style = "style='cursor: default'"; } ?>" <?php echo $style; ?>>
 					<img src="<?php the_sub_field('imagen', 'option'); ?>" alt="">
 				</a>
 			</figure>

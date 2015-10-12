@@ -53,7 +53,7 @@ get_header(); ?>
            </div>
         </div>
         
-        <?php $args = array( 'posts_per_page' => 4, 'cat' => 13, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author) 
+        <?php $args = array( 'posts_per_page' => 6, 'cat' => 13, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author) 
         ?>
         <?php $consulta = new WP_Query( $args ); ?>
         <?php $xyz = 0; ?>
@@ -71,7 +71,7 @@ get_header(); ?>
              <div id="expand<?php echo $xyz; ?>" class="Estadisticas-bloqueContenido-texto">
               <?php the_field('postArchivoDescripcion'); ?>
              </div>
-             <a href="" class="u-link">descargar</a>
+             <a href="<?php the_field('adjuntoPost'); ?>" target="_blank" class="u-link">descargar</a>
              <p id="trigger-expand<?php echo $xyz; ?>" class="u-link">ver más</p>
            </div>
         </div>
