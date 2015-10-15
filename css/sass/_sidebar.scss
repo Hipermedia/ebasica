@@ -263,6 +263,7 @@
 	.Documentos, .Noticias {
 		position: relative;
 		z-index: 10;
+		overflow: hidden;
 
 		.is-showing {
 			top: -1.5rem;
@@ -275,6 +276,10 @@
 			}
 			@media (max-width: 460px ) {
 				height: auto;
+			}
+
+			p {
+				cursor: pointer;
 			}
 		}
 
