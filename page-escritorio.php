@@ -22,7 +22,7 @@ get_header(); ?>
          //$filtro =  $_POST['filtroNoti'] ? $_POST['filtroNoti'] : "'3,4'";
          echo $filtro;
 
-         $args = array( /*'author' => $usuarioID,*/ 'cat' => $filtro, 'posts_per_page' => -1 );
+         $args = array( 'author' => $usuarioID->ID, 'cat' => $filtro, 'posts_per_page' => -1 );
 
          $the_query = new WP_Query( $args ); 
          ?>
