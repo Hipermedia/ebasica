@@ -37,6 +37,7 @@
 <?php bootstrap(); // framework Bootsrap ?>
 <?php flexslider(); // Flexslider ?>
 <?php themejs(); // Los scripts personalizados del tema ?>
+<?php simplePagination(); ?>
 
 <?php wp_footer(); ?>
 </body>

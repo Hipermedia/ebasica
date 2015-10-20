@@ -357,8 +357,121 @@
 						display: none;
 					}
 				}
+
+				#number-pagination {
+					margin-right: 2rem;
+					display: block;
+					clear: both;
+					padding: 1em 0; /* 16px */
+					text-align: right;
+
+					.pagination-page-numbers {
+						/*background-color: #e5e5e5;*/
+						/*padding: .8em 1.2em;*/
+						border: #860A0C solid 1px;
+						color: #7D7D7D;
+						/*float: left;*/
+						margin: 0 .2em .2em 0;
+						border-radius: 50%;
+						width: 13px;
+						height: 13px;
+						display: inline-block;
+						vertical-align: top;
+
+						.no-number-pagination {
+							opacity: 0;
+						}
+						
+					}
+
+					.pagination-page-numbers.on {
+						background-color: #860A0C; /* Old browsers */	
+						border: #860A0C solid 1px;
+						color: #fff !important;
+						font-weight: bold;
+					}
+
+					.prev,.next {
+						display: none;
+					}
+				}
+
+				#number-pagination-second {
+					margin-right: 2rem;
+					display: block;
+					clear: both;
+					padding: 1em 0; /* 16px */
+					text-align: right;
+
+					.pagination-page-numbers {
+						/*background-color: #e5e5e5;*/
+						/*padding: .8em 1.2em;*/
+						border: #860A0C solid 1px;
+						color: #7D7D7D;
+						/*float: left;*/
+						margin: 0 .2em .2em 0;
+						border-radius: 50%;
+						width: 13px;
+						height: 13px;
+						display: inline-block;
+						vertical-align: top;
+
+						.no-number-pagination {
+							opacity: 0;
+						}
+						
+					}
+
+					.pagination-page-numbers.on {
+						background-color: #860A0C; /* Old browsers */	
+						border: #860A0C solid 1px;
+						color: #fff !important;
+						font-weight: bold;
+					}
+
+					.prev,.next {
+						display: none;
+					}
+				}
+
+				#number-pagination-third {
+					margin-right: 2rem;
+					display: block;
+					clear: both;
+					padding: 1em 0; /* 16px */
+					text-align: right;
+
+					.pagination-page-numbers {
+						/*background-color: #e5e5e5;*/
+						/*padding: .8em 1.2em;*/
+						border: #860A0C solid 1px;
+						color: #7D7D7D;
+						/*float: left;*/
+						margin: 0 .2em .2em 0;
+						border-radius: 50%;
+						width: 13px;
+						height: 13px;
+						display: inline-block;
+						vertical-align: top;
+
+						.no-number-pagination {
+							opacity: 0;
+						}
+						
+					}
+
+					.pagination-page-numbers.on {
+						background-color: #860A0C; /* Old browsers */	
+						border: #860A0C solid 1px;
+						color: #fff !important;
+						font-weight: bold;
+					}
+
+					.prev,.next {
+						display: none;
+					}
+				}
 			}
 		}
 	}
-
 }

@@ -485,6 +485,12 @@ $template_url = get_bloginfo( 'template_url' );
 	wp_enqueue_script( 'waypoints', $template_url .'/js/waypoints/jquery.waypoints.min.js', array('jquery'), '', 1);
 }
 
+// WayPoints
+function simplePagination() {
+$template_url = get_bloginfo( 'template_url' );
+	wp_enqueue_script( 'simple-pagination', $template_url .'/js/simple-pagination/jquery.simplePagination.min.js', array('jquery'), '', 1);
+}
+
 // Bootstrap
 function bootstrap() {
 $template_url = get_bloginfo( 'template_url' );

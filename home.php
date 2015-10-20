@@ -80,7 +80,7 @@ get_header(); ?>
 			<!-- Programas - contenido  -->
 			<div role="tabpanel" class="CoverTabs-contentTab tab-pane fade in" id="tabProgramas">
 				<?php if( have_rows('recursoProgramas', 'option') ): ?>
-			  		<ul class="CoverTabs-list">
+			  		<ul id="pagination" class="CoverTabs-list">
 			  		    <?php while( have_rows('recursoProgramas', 'option') ): the_row(); ?>
 				  		    <li class="CoverTabs-listItem">
 				  		   		<i class="fa fa-circle"></i>
@@ -89,14 +89,15 @@ get_header(); ?>
 				  		   		</a>
 				  		   	</li>
 			  		   	<?php endwhile; ?>
-			  		</ul>	
+			  		</ul>
+			  		<div id="number-pagination" class="pages"></div>	
 		  		<?php endif; ?>
 	  			<img class="CoverSlider-slideImage" src="<?php bloginfo('template_directory'); ?>/images/tab_img_programas.png" alt="">       
 		  	</div>
 		  	<!-- Servicios - contenido  -->
 			<div role="tabpanel" class="CoverTabs-contentTab tab-pane fade" id="tabServicios">
 		  		<?php if( have_rows('recursoServicios', 'option') ): ?>
-			  		<ul class="CoverTabs-list">
+			  		<ul id="pagination-second" class="CoverTabs-list">
 			  		    <?php while( have_rows('recursoServicios', 'option') ): the_row(); ?>
 				  		    <li class="CoverTabs-listItem">
 				  		   		<i class="fa fa-circle"></i>
@@ -106,13 +107,14 @@ get_header(); ?>
 				  		   	</li>
 			  		   	<?php endwhile; ?>
 			  		</ul>	
+			  		<div id="number-pagination-second" class="pages"></div>
 		  		<?php endif; ?>
 		  		<img class="CoverSlider-slideImage" src="<?php bloginfo('template_directory'); ?>/images/tab_img_servicios.png" alt="">  		
 		  	</div>
 		  	<!-- Noticias - contenido  -->
 			<div role="tabpanel" class="CoverTabs-contentTab tab-pane fade" id="tabNoticias">
 		  		<?php if( have_rows('recursoNoticias', 'option') ): ?>
-			  		<ul class="CoverTabs-list">
+			  		<ul id="pagination-third" class="CoverTabs-list">
 			  		    <?php while( have_rows('recursoNoticias', 'option') ): the_row(); ?>
 				  		    <li class="CoverTabs-listItem">
 				  		   		<i class="fa fa-circle"></i>
@@ -122,6 +124,7 @@ get_header(); ?>
 				  		   	</li>
 			  		   	<?php endwhile; ?>
 			  		</ul>	
+			  		<div id="number-pagination-third" class="pages"></div>
 		  		<?php endif; ?>
 		  		<img class="CoverSlider-slideImage" src="<?php bloginfo('template_directory'); ?>/images/tab_img_noticias.png" alt="">	
 		  	</div>

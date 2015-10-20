@@ -1,5 +1,34 @@
 jQuery(document).ready(function($) {
 
+	$(function(){
+		var perPage = 6;
+		var opened = 1;
+		var onClass = 'on';
+		var paginationSelector = '#number-pagination';
+		$('#pagination').simplePagination(perPage, opened, onClass, paginationSelector);
+	});
+
+	$(function(){
+		var perPage = 6;
+		var opened = 1;
+		var onClass = 'on';
+		var paginationSelector = '#number-pagination-second';
+		$('#pagination-second').simplePagination(perPage, opened, onClass, paginationSelector);
+	});
+
+	$(function(){
+		var perPage = 6;
+		var opened = 1;
+		var onClass = 'on';
+		var paginationSelector = '#number-pagination-third';
+		$('#pagination-third').simplePagination(perPage, opened, onClass, paginationSelector);
+	});
+
+	$('.hideByJQ').html("");
+	$('.no-number-pagination').html("");
+
+
+
 	// Versión responsive del menú; oculta la navegación y en su defecto aparece un botón para mostrar u ocultarl la navegación
 	$('.toggle-nav').click(function(e) {
 	    $(this).toggleClass('activo');
