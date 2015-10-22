@@ -9,6 +9,9 @@ get_header(); ?>
 
          <!-- obtengo el ID del usuario loggeado -->
          <?php $usuarioID = wp_get_current_user(); ?>
+         <?php $id_query = $usuarioID->user_login; ?>
+         
+         <h1 class="Page-title"><?php echo $usuarioID->display_name; ?></h1>
       
        	<figure class="Escritorio-imagenSuperior">
        		<img src="<?php echo get_plantilla_url().'/images/cabecera_MiEscritorio.png' ?>" alt="">
@@ -20,9 +23,9 @@ get_header(); ?>
          <?php
          $filtro =  $_POST['filtroDocs'] ? $_POST['filtroDocs'] : "'3,4'";
          //$filtro =  $_POST['filtroNoti'] ? $_POST['filtroNoti'] : "'3,4'";
-         echo $filtro;
+         //echo $filtro;
 
-         $args = array( 'author' => $usuarioID->ID, 'cat' => $filtro, 'posts_per_page' => -1 );
+         $args = array( 'author' => $id_query, 'cat' => $filtro, 'posts_per_page' => -1 );
 
          $the_query = new WP_Query( $args ); 
          ?>
