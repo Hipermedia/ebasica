@@ -20,20 +20,33 @@
 		<!-- botón/ficha Documentos -->
 		<div class="Documentos">
 			<img class="Documentos-image" src="<?php bloginfo('template_directory'); ?>/images/btn_documentos.png" alt="">
-			<div id="documentos-panel" class="u-panel">
-				<p><span class="u-circle comunicados"></span>comunicados</p>
-				<p><span class="u-circle circulares"></span>circulares</p>
-				<p><span class="u-circle oficios"></span>oficios</p>
-			</div>
+			
+			<form id="documentosFilter" action="" method="POST">
+				<div id="documentos-panel" class="u-panel">
+					<p id="comunicadosTrigger"><span class="u-circle comunicados"></span>comunicados</p>
+
+					<p id="circularesTrigger"><span class="u-circle circulares"></span>circulares</p>
+					
+					<p id="oficiosTrigger"><span class="u-circle oficios"></span>oficios</p>
+
+					<input id="documentosInput" type="hidden" name="filtroDocs" value="">
+				</div>
+			</form>
+
 		</div>		
 		<!-- botón/ficha Noticias -->
 		<div class="Noticias">
 			<img class="Noticias-image" src="<?php bloginfo('template_directory'); ?>/images/btn_noticias.png" alt="">
-			<div id="noticias-panel" class="u-panel">
-				<p><span class="u-circle convocatorias"></span>convocatorias</p>
-				<p><span class="u-circle estadisticas"></span>estadísticas</p>
-				<p><span class="u-circle eventos"></span>eventos</p>
-			</div>
+			
+			<form id="noticiasFilter" action="" method="POST">
+				<div id="noticias-panel" class="u-panel">
+					<p id="convocatoriasTrigger"><span class="u-circle convocatorias"></span>convocatorias</p>
+					<p id="estadisticasTrigger"><span class="u-circle estadisticas"></span>estadísticas</p>
+					<p id="eventosTrigger"><span class="u-circle eventos"></span>eventos</p>
+
+					<input id="noticiasInput" type="hidden" name="filtroDocs" value="">
+				</div>
+			</form>
 		</div>
 	<?php } ?>
 	

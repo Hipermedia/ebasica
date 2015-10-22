@@ -128,4 +128,31 @@ jQuery(document).ready(function($) {
 	// Quito numeritos del numbered nav
 	$('.page-numbers').html("");
 
+
+	$("#comunicadosTrigger").click(function(){
+		$("#documentosInput").attr('value', '5');
+		$("#documentosFilter").submit();
+	});
+	$("#circularesTrigger").click(function(){
+		$("#documentosInput").attr('value', '6');
+		$("#documentosFilter").submit();
+	});
+	$("#oficiosTrigger").click(function(){
+		$("#documentosInput").attr('value', '7');
+		$("#documentosFilter").submit();
+	});
+
+	$("#convocatoriasTrigger").click(function(){
+		$("#noticiasInput").attr('value', '8');
+		$("#noticiasFilter").submit();
+	});
+	$("#estadisticasTrigger").click(function(){
+		$("#noticiasInput").attr('value', '9');
+		$("#noticiasFilter").submit();
+	});
+	$("#eventosTrigger").click(function(){
+		$("#noticiasInput").attr('value', '10');
+		$("#noticiasFilter").submit();
+	});
+
 });
