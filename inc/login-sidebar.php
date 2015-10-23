@@ -9,9 +9,11 @@
     <!-- formulario login WP a patín -->
     <form name="loginform" id="loginform-home" action="<?php echo get_option('home'); ?>/conmutador" method="POST">
     	<p>
+    		<label for="user_login">nombre de usuario:</label>
     		<input type="text" name="log" id="user_login" value=""/>
     	</p>
     	<p>
+    		<label for="user_pass">contraseña:</label>
     		<input type="password" name="pwd" id="user_pass" value=""/>
     	</p>
     	<p class="submit">

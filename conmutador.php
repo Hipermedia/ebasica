@@ -12,18 +12,22 @@
 
 	//Extraigo y guardo los siguientes tres caracteres de la cadena del usuario para asignar el usuario WP según
 	//el Tipo de Centro de Trabajo
-	$usuarioTCT = substr($usuarioString, 2, 5); 
+	$usuarioTCT = substr($usuarioString, 2, 5);
+
+	if($usuarioTCT == 'ADG')  {
+		$usuarioTCT = $usuario;
+	}
 
 	//Construimos un array por cada CCT con todas sus literales para mostrar las noticias que le corresponden
 	//en la plantilla de escritorio
 	//--Dirección General de Educación Inicial y Preescolar
-	$DGEIP = array('FLS');
+	$DGEIP = array('FLS', '30ADG2312Z', '30ADG2317U');
 	//--Subdirección de Educación Inicial y Preescolar Federalizada
 	$SEIPF = array('DJN', 'DDI', 'FLS', 'PJN', 'NJN', 'PDI', 'NDI', 'FEI');
 	//--Subdirección de Educación Preescolar Estatal
 	$SEPE = array('EJN', 'UDI', 'EDI', 'PJN');
 	//--Dirección General de Educación Primaria Federalizada
-	$DGEPF = array('DPR', 'PPR', 'DZC');
+	$DGEPF = array('DPR', 'PPR', 'DZC', '30ADG0075Z');
 	//--Dirección General de Educación Primaria Estatal
 	$DGEPE = array('EPR', 'EBA', 'PPR');
 	//--Subdirección de Escuelas Secundarias Generales 
@@ -40,6 +44,10 @@
 	$DEEF = array('DML');
 	//--Dirección de Educación Indígena
 	$DEI = array('DCC', 'DPB', 'DIN', 'DCI', 'TAI'); 
+	//--Dirección General de Educación Secundaria
+	$DGES = array('30ADG0901Z', '30ADG0904X', '30ADG0907U', '30ADG0910H');
+	//--Coordinación Estatal Actualización Magisterial
+	$CEAM = array('30ADG2310A', '30ADG2316V', '30ADG0800B', '30ADG0900A', '30ADG2352Z', '30ADG2348N', '30ADG2713U', '30ADG2324D');
 
 	//Pregunto si se le dio click al submit del formulario
 	if(isset($_POST['wp-submit'])) {
@@ -83,11 +91,22 @@
 
 			// // FIN DE WEB SERVICE
 
-			if($resAcceso == TRUE) {
+			if($resAcceso == TRUE && $usuario == 'CTBasica') {
 
-				header("Location: http://localhost/ebasica/escritorio");
+				$wp_redirect = get_option('home');
 
-			} elseif($usuarioTipo == 30) {
+				header("Location: ".$wp_redirect."/escritorio/");
+
+			} else {
+
+				$login_error = "<strong>ERROR:</strong> Datos incorrectos, por favor verifique su información";
+
+				$wp_redirect = get_option('home');
+
+				header("Location: ".$wp_redirect."?login-error=".urlencode($login_error));
+			}
+
+			if($resAcceso == TRUE && $usuarioTipo == 30) {
 
 				$creds = array();
 
@@ -126,6 +145,13 @@
 
 				} elseif (in_array($usuarioTCT, $DEI)) {
 					$creds['user_login'] = '20';
+
+				} elseif (in_array($usuarioTCT, $DGES)) {
+					$creds['user_login'] = '14';
+
+				} elseif (in_array($usuarioTCT, $CEAM)) {
+					$creds['user_login'] = '21';
+
 				} else {
 					$creds['user_login'] = 0;
 				}
@@ -134,7 +160,9 @@
 
 					$login_error = "<strong>ERROR:</strong> Datos incorrectos, por favor verifique su información";
 
-					header("Location: http://localhost/ebasica?login-error=".urlencode($login_error));
+					$wp_redirect = get_option('home');
+
+					header("Location: ".$wp_redirect."?login-error=".urlencode($login_error));
 
 				} else {
 
@@ -147,7 +175,9 @@
 						echo $user->get_error_message();
 					} else {
 
-						header("Location: http://localhost/ebasica/escritorio");	
+						$wp_redirect = get_option('home');
+
+						header("Location: ".$wp_redirect."/escritorio/");	
 					}
 				}
 			}
@@ -163,7 +193,7 @@
 
 				$login_error = $user->get_error_message();
 
-				header("Location: http://localhost/ebasica?login-error=".urlencode($login_error));
+				//header("Location: http://localhost/ebasica?login-error=".urlencode($login_error));
 				
 			} else {
 				$WP_admin = get_option('home');
