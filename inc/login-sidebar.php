@@ -7,7 +7,7 @@
 	<img id="loginButton" class="Login-image" src="<?php bloginfo('template_directory'); ?>/images/btn_login.png" alt="">
 
     <!-- formulario login WP a patín -->
-    <form name="loginform" id="loginform-home" action="<?php echo get_option('home'); ?>/conmutador" method="POST">
+    <form name="loginform" id="loginform-home" action="<?php echo get_option('home'); ?>/conmutador/" method="POST">
     	<p>
     		<label for="user_login">nombre de usuario:</label>
     		<input type="text" name="log" id="user_login" value=""/>

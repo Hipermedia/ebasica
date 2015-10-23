@@ -1,3 +1,8 @@
+<?php  
+/**
+ * Template Name: Conmutador
+ */
+?>
 <?php
 	//Obtengo el usuario y contraseña que viene del formulario de login
 	$usuario = $_POST['log'];
@@ -51,6 +56,15 @@
 
 	//Pregunto si se le dio click al submit del formulario
 	if(isset($_POST['wp-submit'])) {
+
+		if($usuario == NULL || $contrasena == NULL) {
+
+			$login_error = "<strong>ERROR:</strong> Datos incorrectos, por favor verifique su información";
+
+			$wp_redirect = get_option('home');
+
+			header("Location: ".$wp_redirect."?login-error=".urlencode($login_error));
+		}
 		
 		//Pregunto si es usuario "30"
 		if($usuarioTipo == 30 || $usuario == 'CTBasica') {
@@ -193,7 +207,7 @@
 
 				$login_error = $user->get_error_message();
 
-				//header("Location: http://localhost/ebasica?login-error=".urlencode($login_error));
+				header("Location: http://localhost/ebasica?login-error=".urlencode($login_error));
 				
 			} else {
 				$WP_admin = get_option('home');

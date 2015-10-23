@@ -14,6 +14,10 @@ get_header(); ?>
          <!-- obtengo el ID del usuario loggeado -->
          <?php $usuarioID = wp_get_current_user(); ?>
          <?php $id_query = $usuarioID->user_login; ?>
+        
+         <?php if(current_user_can( 'subscriber' )) : ?> 
+          <a href="<?php echo wp_logout_url( home_url() ); ?>">Cerrar sesión</a>
+         <?php endif; ?> 
          
          <h1 class="Page-title"><?php echo $usuarioID->display_name; ?></h1>
       
