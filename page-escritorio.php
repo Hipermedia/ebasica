@@ -2,6 +2,10 @@
 /**
  * Template Name: Escritorio
  */
+if(!is_user_logged_in()) {
+
+  wp_redirect( home_url() ); exit;
+} else {
 
 get_header(); ?>
    <?php while ( have_posts() ) : the_post(); ?>
@@ -202,3 +206,4 @@ get_header(); ?>
        </section>
     <?php endwhile; // end of the loop. ?>
 <?php get_footer(); ?>
+<?php } ?>
