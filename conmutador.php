@@ -25,34 +25,42 @@
 
 	//Construimos un array por cada CCT con todas sus literales para mostrar las noticias que le corresponden
 	//en la plantilla de escritorio
+
+	//--Subsecretaría de Educación Básica
+	$SEB = array('30ADG0075Z');
+
 	//--Dirección General de Educación Inicial y Preescolar
-	$DGEIP = array('FLS', '30ADG2312Z', '30ADG2317U');
+	$DGEIP = array('FLS', '30ADG2312Z', '30ADG2317U', '30FTM0009Y');
 	//--Subdirección de Educación Inicial y Preescolar Federalizada
-	$SEIPF = array('DJN', 'DDI', 'FLS', 'PJN', 'NJN', 'PDI', 'NDI', 'FEI');
+	$SEIPF = array('DJN', 'DDI', 'FLS', 'PJN', 'NJN', 'PDI', 'NDI', 'FEI', 'FJZ', 'FZP');
 	//--Subdirección de Educación Preescolar Estatal
-	$SEPE = array('EJN', 'UDI', 'EDI', 'PJN');
+	$SEPE = array('EJN', 'UDI', 'EDI', 'PJN', 'FZP', 'FIZ5', '30FIZ5042V');
 	//--Dirección General de Educación Primaria Federalizada
-	$DGEPF = array('DPR', 'PPR', 'DZC', '30ADG0075Z');
+	$DGEPF = array('DPR', 'PPR', 'DZC', 'FJS', 'FIZ0');
 	//--Dirección General de Educación Primaria Estatal
-	$DGEPE = array('EPR', 'EBA', 'PPR');
+	$DGEPE = array('EPR', 'EBA', 'PPR', 'FIZ');
 	//--Subdirección de Escuelas Secundarias Generales 
-	$SESG = array('DES', 'PES', 'DSN');
+	$SESG = array('DES', 'PES', 'DSN', 'FJE', 'FIS');
 	//--Subdirección de Escuelas Secundarias Técnicas
-	$SEST = array('DST', 'PST');
+	$SEST = array('DST', 'PST', 'FZT');
 	//--Subdirección de Escuelas Telesecundarias
-	$SET = array('DTV', 'PTV');
+	$SET = array('DTV', 'PTV', 'FTS', 'FTV0');
 	//--Subdirección de Escuelas Secundarias Estatales 
-	$SESE = array('EES', 'EST', 'ETV');
+	$SESE = array('EES', 'EST', 'ETV', 'FTV5');
+	//--Dirección de Educación Especial
+	$DEE = array('30ADG2715S', '30ADG2714T');
 	//--Departamento de Educación Especial Estatal
-	$DEEE = array('EML', 'FUA');
+	$DEEE = array('EML', 'FUA', 'FSE5');
 	//--Departamento de Educación Especial Federalizada
-	$DEEF = array('DML');
+	$DEEF = array('DML', 'FJE', 'FSE0');
 	//--Dirección de Educación Indígena
-	$DEI = array('DCC', 'DPB', 'DIN', 'DCI', 'TAI'); 
+	$DEI = array('DCC', 'DPB', 'DIN', 'DCI', 'TAI', 'FJI', 'FZI', 'FCY', '30FZI0590S', '30DCC1325', '30DPB0368U'); 
 	//--Dirección General de Educación Secundaria
 	$DGES = array('30ADG0901Z', '30ADG0904X', '30ADG0907U', '30ADG0910H');
 	//--Coordinación Estatal Actualización Magisterial
 	$CEAM = array('30ADG2310A', '30ADG2316V', '30ADG0800B', '30ADG0900A', '30ADG2352Z', '30ADG2348N', '30ADG2713U', '30ADG2324D');
+	//--Dirección General de Educación Física Estatal
+	$DGEFE = array('FZF');
 
 	//Pregunto si se le dio click al submit del formulario
 	if(isset($_POST['wp-submit'])) {
@@ -157,6 +165,9 @@
 				} elseif (in_array($usuarioTCT, $DEEF)) {
 					$creds['user_login'] = '11';
 
+				} elseif (in_array($usuarioTCT, $DEE)) {
+					$creds['user_login'] = '9';
+
 				} elseif (in_array($usuarioTCT, $DEI)) {
 					$creds['user_login'] = '20';
 
@@ -165,6 +176,12 @@
 
 				} elseif (in_array($usuarioTCT, $CEAM)) {
 					$creds['user_login'] = '21';
+
+				} elseif (in_array($usuarioTCT, $DGEFE)) {
+					$creds['user_login'] = '19';
+
+				} elseif (in_array($usuarioTCT, $SEB)) {
+					$creds['user_login'] = 'SEB';
 
 				} else {
 					$creds['user_login'] = 0;
@@ -207,7 +224,9 @@
 
 				$login_error = $user->get_error_message();
 
-				header("Location: http://localhost/ebasica?login-error=".urlencode($login_error));
+				$wp_redirect = get_option('home');
+
+				header("Location: ".$wp_redirect."?login-error=".urlencode($login_error));
 				
 			} else {
 				$WP_admin = get_option('home');

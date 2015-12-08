@@ -13,8 +13,18 @@
 
 	<?php if(!is_page_template('page-escritorio.php')) { ?>
 		<!-- Formulario de ingreso en el sidebar -->
-		<?php loginSidebar(); ?>
+		<?php if(!is_user_logged_in()) { ?>
+			<?php loginSidebar(); ?>
+		<?php } ?>
 	<?php } ?>
+	<?php if(current_user_can( 'subscriber' )) : ?> 
+	 <a href="<?php echo wp_logout_url( home_url() ); ?>">
+	 	<img class="Escritorio-image" src="<?php bloginfo('template_directory'); ?>/images/salir-escritorio.png" alt="">
+	 </a>
+	 <?php if(!is_page_template('page-escritorio.php')) : ?>
+	 <a href="<?php echo get_option('home') ?>/escritorio"><img class="Escritorio-image" src="<?php bloginfo('template_directory'); ?>/images/mi-escritorio.png" alt=""></a>
+	<?php endif; ?>
+	<?php endif; ?> 
 	
 	<?php if(is_page_template('page-escritorio.php')) { ?>
 		<!-- botón/ficha Documentos -->
@@ -269,5 +279,4 @@
 		<?php endwhile ?>
 	</div>
 </aside>
-
 

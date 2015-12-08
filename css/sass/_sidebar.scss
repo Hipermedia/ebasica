@@ -22,6 +22,12 @@
 	@media (max-width: $smaller-width ) {
 		width: 90%;
 	}
+
+	.Escritorio-image {
+		width: 100%;
+		cursor: pointer;
+	}
+
 	
 	// Formulario de ingreso
 	.Login {
@@ -276,6 +282,7 @@
 			}
 			@media (max-width: 460px ) {
 				height: auto;
+				width: 93%;
 			}
 
 			p {
@@ -283,7 +290,7 @@
 			}
 		}
 
-		.Documentos-image, .Noticias-image {
+		.Documentos-image, .Noticias-image, .Escritorio-image {
 			width: 100%;
 			cursor: pointer;
 		}

@@ -315,7 +315,7 @@ endif; // shbase_continue_reading_link
  * function tied to the excerpt_more filter hook.
  */
 function shbase_auto_excerpt_more( $more ) {
-	return ' &hellip;' . shbase_continue_reading_link();
+	return ' &hellip;'/* . shbase_continue_reading_link()*/;
 }
 add_filter( 'excerpt_more', 'shbase_auto_excerpt_more' );
 
@@ -326,7 +326,7 @@ add_filter( 'excerpt_more', 'shbase_auto_excerpt_more' );
  * function tied to the get_the_excerpt filter hook.
  */
 function shbase_custom_excerpt_more( $output ) {
-	if ( has_excerpt() && ! is_attachment() ) {
+	if ( /*has_excerpt() &&*/ ! is_attachment() ) {
 		$output .= shbase_continue_reading_link();
 	}
 	return $output;

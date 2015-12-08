@@ -67,10 +67,17 @@ get_header(); ?>
          </div>
          
          <?php $cat_material  = $_GET['material']?$_GET['material']:'11'; ?>
-         <?php $args = array( 'paged' => get_query_var('paged'), 'posts_per_page' => 6, 'cat' => $cat_material, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author); ?>
+         <?php $args = array( 'paged' => get_query_var('paged'), 'posts_per_page' => 8, 'cat' => $cat_material, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author); ?>
          <?php $consulta = new WP_Query( $args ); ?>
          <?php $xyz = 0; ?>
          <?php while ( $consulta->have_posts() ) : $consulta->the_post(); ?>
+         <?php 
+         // if(get_field('privacidadPost') == '') {
+         //    $remover = 'private-hide';
+         // } else {
+         //    $remover = '';
+         // }
+         ?>
          <?php $xyz++; ?>
          <?php 
             $categories = get_the_category(); 
@@ -94,7 +101,7 @@ get_header(); ?>
             }
          ?>
             
-         <div class="Materiales-bloque u-border-<?php echo $clase; ?>">
+         <div class="Materiales-bloque u-border-<?php echo $clase; ?> <?php //echo $remover; ?>">
          	<div class="Materiales-bloqueIcono u-icono-<?php echo $clase; ?>"></div>
          	<div class="Materiales-bloqueContenido u-padding-<?php echo $clase; ?>">
          	  <h2 class="Materiales-bloqueContenido-titulo u-titulo-<?php echo $clase; ?>">
@@ -106,8 +113,10 @@ get_header(); ?>
          	  <div id="expand<?php echo $xyz; ?>" class="Materiales-bloqueContenido-texto">
                <?php the_field('postArchivoDescripcion'); ?>
          	  </div>
-         	  <a href="<?php the_field('adjuntoPost'); ?>" target="_blank" class="u-link">descargar</a>
-         	  <p id="trigger-expand<?php echo $xyz; ?>" class="u-link">ver más</p>
+              <?php if(get_field('adjuntoPost')): ?>
+         	     <a href="<?php the_field('adjuntoPost'); ?>" target="_blank" class="u-link">descargar</a>
+         	  <?php endif; ?>
+              <p id="trigger-expand<?php echo $xyz; ?>" class="u-link">ver más</p>
          	</div>
          </div>
    

@@ -48,11 +48,19 @@ get_header(); ?>
             </div>
          </div>
          
-         <?php $args = array( 'posts_per_page' => 6, 'cat' => 12, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author); ?>
+         <?php $args = array( 'posts_per_page' => 8, 'cat' => 12, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author); ?>
          <?php $consulta = new WP_Query( $args ); ?>
          <?php while ( $consulta->have_posts() ) : $consulta->the_post(); ?>
+
+         <?php 
+         // if(get_field('privacidadPost') == '') {
+         //    $remover = 'private-hide';
+         // } else {
+         //    $remover = '';
+         // }
+         ?>
             
-         <div class="ActividadesSemanales-bloque u-border-actividades">
+         <div class="ActividadesSemanales-bloque u-border-actividades <?php echo $remover; ?>">
          	<div class="ActividadesSemanales-bloqueContenido">
          	  <h2 class="ActividadesSemanales-bloqueContenido-titulo u-titulo-actividades">
                <?php the_title(); ?>

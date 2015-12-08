@@ -38,10 +38,16 @@ get_header(); ?>
            </div>
         </div>
 
-        <?php $args = array( 'posts_per_page' => 6, 'cat' => 3, 'author' => $post->post_author); ?>
+        <?php $args = array( 'posts_per_page' => 8, 'cat' => 3, 'author' => $post->post_author); ?>
         <?php $consulta = new WP_Query( $args ); ?>
         <?php while ( $consulta->have_posts() ) : $consulta->the_post(); ?>
-           <div class="Noticias-bloque u-border-noticias">
+        <?php if(get_field('privacidadPost') == '') {
+           $remover = 'private-hide';
+        } else {
+           $remover = '';
+        }
+        ?>
+           <div class="Noticias-bloque u-border-noticias <?php echo $remover; ?>">
            	<div class="Noticias-bloqueIcono u-icono-noticias"></div>
            	<div class="Noticias-bloqueContenido">
            	  <h2 class="Noticias-bloqueContenido-titulo u-titulo-noticias">

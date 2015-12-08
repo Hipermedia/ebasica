@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
 
 	$(function(){
-		var perPage = 6;
+		var perPage = 20;
 		var opened = 1;
 		var onClass = 'on';
 		var paginationSelector = '#number-pagination';
@@ -9,7 +9,7 @@ jQuery(document).ready(function($) {
 	});
 
 	$(function(){
-		var perPage = 6;
+		var perPage = 20;
 		var opened = 1;
 		var onClass = 'on';
 		var paginationSelector = '#number-pagination-second';
@@ -17,7 +17,7 @@ jQuery(document).ready(function($) {
 	});
 
 	$(function(){
-		var perPage = 6;
+		var perPage = 20;
 		var opened = 1;
 		var onClass = 'on';
 		var paginationSelector = '#number-pagination-third';
@@ -127,6 +127,8 @@ jQuery(document).ready(function($) {
 
 	// Quito numeritos del numbered nav
 	$('.page-numbers').html("");
+	$('.prev').remove();
+	$('.next').remove();
 
 
 	$("#comunicadosTrigger").click(function(){
@@ -154,5 +156,7 @@ jQuery(document).ready(function($) {
 		$("#noticiasInput").attr('value', '10');
 		$("#noticiasFilter").submit();
 	});
+
+	$(".private-hide").remove();
 
 });

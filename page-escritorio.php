@@ -5,24 +5,23 @@
 if(!is_user_logged_in()) {
 
   wp_redirect( home_url() ); exit;
+
 } else {
 
 get_header(); ?>
+
    <?php while ( have_posts() ) : the_post(); ?>
       <section class="Escritorio">
-
          <!-- obtengo el ID del usuario loggeado -->
          <?php $usuarioID = wp_get_current_user(); ?>
          <?php $id_query = $usuarioID->user_login; ?>
-        
-         <?php if(current_user_can( 'subscriber' )) : ?> 
-          <a href="<?php echo wp_logout_url( home_url() ); ?>">Cerrar sesión</a>
-         <?php endif; ?> 
          
          <h1 class="Page-title"><?php echo $usuarioID->display_name; ?></h1>
       
        	<figure class="Escritorio-imagenSuperior">
-       		<img src="<?php echo get_plantilla_url().'/images/cabecera_MiEscritorio.png' ?>" alt="">
+          <a href="<?php echo get_option('home') ?>/escritorio">
+            <img src="<?php echo get_plantilla_url().'/images/cabecera_MiEscritorio.png' ?>" alt="">
+          </a>
        	</figure>
               
          <!-- se dividen en dos: documentos y noticias -->
@@ -32,15 +31,38 @@ get_header(); ?>
          $filtro =  $_POST['filtroDocs'] ? $_POST['filtroDocs'] : "'3,4'";
          //$filtro =  $_POST['filtroNoti'] ? $_POST['filtroNoti'] : "'3,4'";
          //echo $filtro;
+         // Preguntamos si el current user es hijo de alguna dependencia mayor para mostrar los posts padre
+         if( $id_query == 15 || $id_query == 38 || $id_query == 41 || $id_query == 39 ) {
+          
+          $autor_extra = 14;
 
-         $args = array( 'author' => $id_query, 'cat' => $filtro, 'posts_per_page' => -1 );
+         } elseif ( $id_query == 7 || $id_query == 8 ) {
+          
+          $autor_extra = 6;
+
+         } elseif ( $id_query == 11 || $id_query == 10 ) {
+          
+          $autor_extra = 9;
+         
+         } else {
+
+          $autor_extra = $id_query;
+         }
+
+         $args = array( 'paged' => get_query_var('paged'), 'author' => ''.$id_query.',62', 'cat' => $filtro, 'posts_per_page' => 10 );
 
          $the_query = new WP_Query( $args ); 
          ?>
          <?php if ( $the_query->have_posts() ) : ?>
             <!-- pagination here -->
             <!-- the loop -->
+            <?php $xyz = 0; ?>
             <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+            <?php $xyz++; ?>
+            <?php //global $post; ?>
+            <?php //var_dump($post); ?>
+
+            <?php //the_field('privacidadPost'); ?>
             
             <?php //var_dump(get_the_category()); ?>
             <?php $cats_array = get_the_category(); ?>
@@ -62,152 +84,46 @@ get_header(); ?>
                      $ico = "docs";
                   }
             ?>
-               
 
                <div class="Escritorio-bloque">
-                  <div class="Escritorio-bloqueIcono <?php echo $ico; ?>-icon-co"></div>
+                  <div class="Escritorio-bloqueIcono <?php the_field('tipoPublicacionEscritorioPost'); ?>"></div>
                   <div class="Escritorio-bloqueContenido u-bg-<?php echo $bg; ?>">
                      <h2 class="Escritorio-bloqueContenido-titulo u-title-<?php echo $title; ?>">
                         <?php the_title(); ?>
                      </h2>
                      <p class="Escritorio-bloqueContenido-data">
-                        Subsecretaría de Educación de Veracruz, <?php the_time(get_option('date_format')); ?>
+                        <!--Subsecretaría de Educación de Veracruz, --><?php the_time(get_option('date_format')); ?>
                      </p>
+                      <div id="expand<?php echo $xyz; ?>" class="Escritorio-bloqueContenido-texto">
+                         <?php the_field('descripcion_del_archivo_privado'); ?>
+                      </div>
                      <!-- <p class="Escritorio-bloqueContenido-texto"> -->
-                        <?php the_excerpt(); ?>
+                        <?php //the_excerpt(); ?>
                      <!-- </p> -->
-                     <a href="" class="u-link">descargar</a>
-                     <a href="" class="u-link">ver más</a>
+                     <?php if(get_field('adjuntoPost')) : ?>
+                     <a href="<?php the_field('adjuntoPost'); ?>" class="u-link" target="_blank">descargar</a>
+                     <?php endif; ?>
+                     <a id="trigger-expand<?php echo $xyz; ?>" class="u-link">ver más</a>
                   </div>
                </div>
+
+               <script>
+                  jQuery('#trigger-expand<?php echo $xyz; ?>').click(function() {
+                      jQuery('#expand<?php echo $xyz; ?>').toggleClass('appear');
+                      jQuery('#expand<?php echo $xyz; ?>').toggleClass('animated fadeIn');
+                  });
+               </script>
              <?php endwhile; ?>
              <!-- end of the loop -->
              <!-- pagination here -->
+             <?php the_custom_numbered_nav($the_query); ?> 
              <?php wp_reset_postdata(); ?>
          <?php else : ?>
                 <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
          <?php endif; ?>
-
-
-       	<!-- <div class="Escritorio-bloque">
-       		<div class="Escritorio-bloqueIcono docs-icon-co"></div>
-       		<div class="Escritorio-bloqueContenido u-bg-documentos">
-       			<h2 class="Escritorio-bloqueContenido-titulo u-title-documentos">
-       				Capacita IVEA a Enlaces Regionales de Incorporación
-       			</h2>
-       			<p class="Escritorio-bloqueContenido-data">
-       				Subsecretaría de Educación de Veracruz, Xalapa, Ver,. 09 de agosto de 2015
-       			</p>
-       			<p id="expand" class="Escritorio-bloqueContenido-texto">
-       				El Instituto Veracruzano de Educación para los Adultos (IVEA) capacitó a 275 voluntarios como Enlaces Regionales de Incorporación (ERI) este fin de semana, en los municipios... Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus dicta debitis laudantium dolore libero delectus harum voluptas a deserunt mollitia!
-       			</p>
-       			<a href="" class="u-link">descargar</a>
-       			<p id="trigger-expand" class="u-link">ver más</p>
-       		</div>
-       	</div>
-
-       	<div class="Escritorio-bloque">
-       		<div class="Escritorio-bloqueIcono docs-icon-ci"></div>
-       		<div class="Escritorio-bloqueContenido u-bg-documentos">
-       			<h2 class="Escritorio-bloqueContenido-titulo u-title-documentos">
-       				Capacita IVEA a Enlaces Regionales de Incorporación
-       			</h2>
-       			<p class="Escritorio-bloqueContenido-data">
-       				Subsecretaría de Educación de Veracruz, Xalapa, Ver,. 09 de agosto de 2015
-       			</p>
-       			<p class="Escritorio-bloqueContenido-texto">
-       				El Instituto Veracruzano de Educación para los Adultos (IVEA) capacitó a 275 voluntarios como Enlaces Regionales de Incorporación (ERI) este fin de semana, en los municipios...
-       			</p>
-       			<a href="" class="u-link">descargar</a>
-       			<a href="" class="u-link">ver más</a>
-       		</div>
-       	</div>
-
-       	<div class="Escritorio-bloque">
-       		<div class="Escritorio-bloqueIcono noti-icon-co"></div>
-       		<div class="Escritorio-bloqueContenido u-bg-noticias">
-       			<h2 class="Escritorio-bloqueContenido-titulo u-title-noticias">
-       				Se inaugura XIX Congreso Ordinario del SETSE
-       			</h2>
-       			<p class="Escritorio-bloqueContenido-data">
-       				Subsecretaría de Educación de Veracruz, Xalapa, Ver,. 09 de agosto de 2015
-       			</p>
-       			<p class="Escritorio-bloqueContenido-texto">
-       				La secretaria de Educación de Veracruz, Xóchitl Osorio Martínez, inauguró el XIX Congreso Ordinario del Sindicato Estatal de Trabajadores al Servicios de la Educación (Setse), con...
-       			</p>
-       			<a href="" class="u-link">descargar</a>
-       			<a href="" class="u-link">ver más</a>
-       		</div>
-       	</div>
-
-       	<div class="Escritorio-bloque">
-       		<div class="Escritorio-bloqueIcono docs-icon-of"></div>
-       		<div class="Escritorio-bloqueContenido u-bg-documentos">
-       			<h2 class="Escritorio-bloqueContenido-titulo u-title-documentos">
-       				Capacita IVEA a Enlaces Regionales de Incorporación
-       			</h2>
-       			<p class="Escritorio-bloqueContenido-data">
-       				Subsecretaría de Educación de Veracruz, Xalapa, Ver,. 09 de agosto de 2015
-       			</p>
-       			<p class="Escritorio-bloqueContenido-texto">
-       				El Instituto Veracruzano de Educación para los Adultos (IVEA) capacitó a 275 voluntarios como Enlaces Regionales de Incorporación (ERI) este fin de semana, en los municipios...
-       			</p>
-       			<a href="" class="u-link">descargar</a>
-       			<a href="" class="u-link">ver más</a>
-       		</div>
-       	</div>
-
-       	<div class="Escritorio-bloque">
-       		<div class="Escritorio-bloqueIcono noti-icon-es"></div>
-       		<div class="Escritorio-bloqueContenido u-bg-noticias">
-       			<h2 class="Escritorio-bloqueContenido-titulo u-title-noticias">
-       				Se inaugura XIX Congreso Ordinario del SETSE
-       			</h2>
-       			<p class="Escritorio-bloqueContenido-data">
-       				Subsecretaría de Educación de Veracruz, Xalapa, Ver,. 09 de agosto de 2015
-       			</p>
-       			<p class="Escritorio-bloqueContenido-texto">
-       				La secretaria de Educación de Veracruz, Xóchitl Osorio Martínez, inauguró el XIX Congreso Ordinario del Sindicato Estatal de Trabajadores al Servicios de la Educación (Setse), con...
-       			</p>
-       			<a href="" class="u-link">descargar</a>
-       			<a href="" class="u-link">ver más</a>
-       		</div>
-       	</div>
-
-       	<div class="Escritorio-bloque">
-       		<div class="Escritorio-bloqueIcono noti-icon-ev"></div>
-       		<div class="Escritorio-bloqueContenido u-bg-noticias">
-       			<h2 class="Escritorio-bloqueContenido-titulo u-title-noticias">
-       				Se inaugura XIX Congreso Ordinario del SETSE
-       			</h2>
-       			<p class="Escritorio-bloqueContenido-data">
-       				Subsecretaría de Educación de Veracruz, Xalapa, Ver,. 09 de agosto de 2015
-       			</p>
-       			<p class="Escritorio-bloqueContenido-texto">
-       				La secretaria de Educación de Veracruz, Xóchitl Osorio Martínez, inauguró el XIX Congreso Ordinario del Sindicato Estatal de Trabajadores al Servicios de la Educación (Setse), con...
-       			</p>
-       			<a href="" class="u-link">descargar</a>
-       			<a href="" class="u-link">ver más</a>
-       		</div>
-       	</div>
-
-       	<div class="Escritorio-bloque">
-       		<div class="Escritorio-bloqueIcono docs-icon-of"></div>
-       		<div class="Escritorio-bloqueContenido u-bg-documentos">
-       			<h2 class="Escritorio-bloqueContenido-titulo u-title-documentos">
-       				Capacita IVEA a Enlaces Regionales de Incorporación
-       			</h2>
-       			<p class="Escritorio-bloqueContenido-data">
-       				Subsecretaría de Educación de Veracruz, Xalapa, Ver,. 09 de agosto de 2015
-       			</p>
-       			<p class="Escritorio-bloqueContenido-texto">
-       				El Instituto Veracruzano de Educación para los Adultos (IVEA) capacitó a 275 voluntarios como Enlaces Regionales de Incorporación (ERI) este fin de semana, en los municipios...
-       			</p>
-       			<a href="" class="u-link">descargar</a>
-       			<a href="" class="u-link">ver más</a>
-       		</div>
-       	</div> -->
        </section>
     <?php endwhile; // end of the loop. ?>
+
 <?php get_footer(); ?>
+
 <?php } ?>

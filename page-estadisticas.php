@@ -53,13 +53,20 @@ get_header(); ?>
            </div>
         </div>
         
-        <?php $args = array( 'posts_per_page' => 6, 'cat' => 13, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author) 
+        <?php $args = array( 'posts_per_page' => 8, 'cat' => 13, 'meta' => 'postArchivoDescripcion', 'author' => $post->post_author) 
         ?>
         <?php $consulta = new WP_Query( $args ); ?>
         <?php $xyz = 0; ?>
         <?php while ( $consulta->have_posts() ) : $consulta->the_post(); ?>
+        <?php 
+        // if(get_field('privacidadPost') == '') {
+        //    $remover = 'private-hide';
+        // } else {
+        //    $remover = '';
+        // }
+        ?>
         <?php $xyz++; ?>
-        <div class="Estadisticas-bloque u-border-estadisticas">
+        <div class="Estadisticas-bloque u-border-estadisticas <?php //echo $remover; ?>">
            <div class="Estadisticas-bloqueIcono u-icono-estadisticas"></div>
            <div class="Estadisticas-bloqueContenido u-padding-estadisticas">
              <h2 class="Estadisticas-bloqueContenido-titulo u-titulo-estadisticas">
